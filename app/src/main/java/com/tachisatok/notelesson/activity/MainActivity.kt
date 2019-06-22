@@ -1,9 +1,9 @@
-package com.tachisatok.notelesson
+package com.tachisatok.notelesson.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.tachisatok.notelesson.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
