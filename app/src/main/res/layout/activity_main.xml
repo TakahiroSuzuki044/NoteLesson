@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:background="?attr/colorBase"
         android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
+        tools:context=".ui.top.MainActivity">
 
     <TextView
             android:layout_width="wrap_content"
