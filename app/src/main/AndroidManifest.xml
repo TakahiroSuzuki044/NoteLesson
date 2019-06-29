@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppThemeRed"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.top.MainActivity"
+        <activity android:name=".ui.search.MainActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
