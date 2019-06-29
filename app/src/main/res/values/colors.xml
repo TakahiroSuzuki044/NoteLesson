@@ -49,4 +49,8 @@
     <color name="colorBaseBlack">#CFD8DC</color>
     <color name="colorAccentBlack">#59413B</color>
 
+    <color name="text_color">#262622</color>
+    <color name="white">#ffffff</color>
+    <color name="ripple_white">#e0e0e0</color>
+
 </resources>

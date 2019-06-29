@@ -1,4 +1,4 @@
-package com.tachisatok.notelesson.ui.top
+package com.tachisatok.notelesson.ui.search
 
 import android.os.Bundle
 import com.tachisatok.notelesson.R
