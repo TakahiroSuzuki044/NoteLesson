@@ -12,7 +12,7 @@
         android:theme="@style/AppThemeBlack"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ui.search.MainActivity"
+            android:name=".ui.select.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

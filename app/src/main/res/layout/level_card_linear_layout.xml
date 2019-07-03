@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/activity_main_level_card_linear_layout"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_margin="20dp"
-              android:background="@drawable/shape_level_select_layout"
-              android:clickable="true"
-              android:elevation="@dimen/button_elevation"
-              android:focusable="true"
-              android:orientation="vertical"
-              android:padding="12dp"
-              android:stateListAnimator="@animator/rise_button_layout">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/activity_main_level_text_view"
-        style="@style/default_text"
+    <LinearLayout
+        android:id="@+id/activity_main_level_card_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        tools:text="れべる★"/>
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_level_select_layout"
+        android:clickable="true"
+        android:elevation="@dimen/button_elevation"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:stateListAnimator="@animator/rise_button_layout">
 
-    <ImageView
-        android:id="@+id/activity_main_level_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        tools:ignore="ContentDescription"
-        tools:src="@mipmap/level_1"/>
+        <TextView
+            android:id="@+id/activity_main_level_text_view"
+            style="@style/default_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            tools:text="れべる★"/>
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/activity_main_level_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            tools:ignore="ContentDescription"
+            tools:src="@mipmap/level_1"/>
+
+    </LinearLayout>
+</layout>

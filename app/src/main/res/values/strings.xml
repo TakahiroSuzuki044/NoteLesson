@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">NoteLesson</string>
+
+    <string name="please_select_level">レベルを選んでね</string>
+    <string name="please_select_level_h">れべるをえらんでね</string>
+
+    <string name="level_1">レベル★</string>
+    <string name="level_1_h">れべる★</string>
+
+    <string name="level_2">レベル★★</string>
+    <string name="level_2_h">れべる★★</string>
+
+    <string name="level_3">レベル★★★</string>
+    <string name="level_3_h">れべる★★★</string>
 </resources>
