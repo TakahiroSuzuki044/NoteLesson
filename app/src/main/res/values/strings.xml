@@ -2,14 +2,60 @@
     <string name="app_name">NoteLesson</string>
 
     <string name="please_select_level">レベルを選んでね</string>
-    <string name="please_select_level_h">れべるをえらんでね</string>
+    <string name="please_select_level_jp">れべるをえらんでね</string>
 
     <string name="level_1">レベル★</string>
-    <string name="level_1_h">れべる★</string>
+    <string name="level_1_jp">れべる★</string>
 
     <string name="level_2">レベル★★</string>
-    <string name="level_2_h">れべる★★</string>
+    <string name="level_2_jp">れべる★★</string>
 
     <string name="level_3">レベル★★★</string>
-    <string name="level_3_h">れべる★★★</string>
+    <string name="level_3_jp">れべる★★★</string>
+
+    <!-- 記号 -->
+    <string name="g_clef">ト音記号</string>
+    <string name="g_clef_jp">とおんきごう</string>
+
+    <string name="f_clef">ヘ音記号</string>
+    <string name="f_clef_jp">へおんきごう</string>
+
+    <!-- 音名 -->
+    <string name="c">ド</string>
+    <string name="c_jp">ど</string>
+
+    <string name="d">レ</string>
+    <string name="d_jp">れ</string>
+
+    <string name="e">ミ</string>
+    <string name="e_jp">み</string>
+
+    <string name="f">ファ</string>
+    <string name="f_jp">ふぁ</string>
+
+    <string name="g">ソ</string>
+    <string name="g_jp">そ</string>
+
+    <string name="a">ラ</string>
+    <string name="a_jp">ら</string>
+
+    <string name="b">シ</string>
+    <string name="b_jp">し</string>
+
+    <!-- 範囲 -->
+    <string name="c_to_e">ド〜ミ</string>
+    <string name="c_to_e_jp">ど〜み</string>
+
+    <string name="c_to_g">ド〜ソ</string>
+    <string name="c_to_g_jp">ど〜そ</string>
+
+    <string name="c_to_c">ド〜ド</string>
+    <string name="c_to_c_jp">ど〜ど</string>
+
+    <string name="a_to_c">ラ〜ド</string>
+    <string name="a_to_c_jp">ら〜ど</string>
+
+    <string name="f_to_c">ファ〜ド</string>
+    <string name="f_to_c_jp">ふぁ〜ど</string>
+
 </resources>
