@@ -6,6 +6,9 @@
     <data>
         <variable name="levelText" type="String"/>
         <variable name="levelImageRes" type="int"/>
+        <variable
+            name="gameLevelTag"
+            type="com.tachisatok.notelesson.constant.GameLevel"/>
     </data>
 
     <LinearLayout
@@ -19,6 +22,8 @@
         android:focusable="true"
         android:orientation="vertical"
         android:padding="12dp"
+        android:tag="@{gameLevelTag}"
+        android:onClick="onClickMoveToRangeSelect"
         android:stateListAnimator="@animator/rise_button_layout">
 
         <TextView
