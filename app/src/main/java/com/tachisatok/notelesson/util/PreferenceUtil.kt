@@ -1,4 +1,4 @@
-package com.tachisatok.notelesson.ui.util
+package com.tachisatok.notelesson.util
 
 import android.content.Context
 import android.content.SharedPreferences

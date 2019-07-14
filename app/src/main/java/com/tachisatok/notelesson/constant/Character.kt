@@ -3,7 +3,7 @@ package com.tachisatok.notelesson.constant
 import android.content.Context
 import androidx.annotation.StringRes
 import com.tachisatok.notelesson.R
-import com.tachisatok.notelesson.ui.util.PreferenceUtil
+import com.tachisatok.notelesson.util.PreferenceUtil
 
 /**
  * 漢字とひらがなを管理するEnum

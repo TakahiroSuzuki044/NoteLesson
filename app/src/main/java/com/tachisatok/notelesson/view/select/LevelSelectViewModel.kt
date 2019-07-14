@@ -1,4 +1,4 @@
-package com.tachisatok.notelesson.ui.select
+package com.tachisatok.notelesson.view.select
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.tachisatok.notelesson.ui.base
+package com.tachisatok.notelesson.view.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

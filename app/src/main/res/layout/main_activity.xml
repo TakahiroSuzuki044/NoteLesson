@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.tachisatok.notelesson.ui.select.LevelSelectViewModel"/>
+            type="com.tachisatok.notelesson.view.select.LevelSelectViewModel"/>
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="?attr/colorBase"
         android:orientation="vertical"
-        tools:context=".ui.select.MainActivity">
+        tools:context=".view.select.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
