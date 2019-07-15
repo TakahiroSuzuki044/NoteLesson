@@ -25,7 +25,10 @@ class RangeSelectViewModel(context: Context, gameLevel: GameLevel) : ViewModel()
         gClefAndFClefList = rangeSelectItemCreator.getGClefAndFClefItem()
     }
 
-    class RangeSelectViewModelFactory(private val context: Context, private val gameLevel: GameLevel) : ViewModelProvider.Factory {
+    class RangeSelectViewModelFactory(private val context: Context, private val gameLevel: GameLevel) :
+        ViewModelProvider.Factory {
+
+        @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass == RangeSelectViewModel::class.java) return RangeSelectViewModel(context, gameLevel) as T
 

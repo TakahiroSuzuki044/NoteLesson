@@ -19,9 +19,10 @@ class LevelSelectViewModel(context: Context) : ViewModel() {
     val level3ImageRes = R.mipmap.level_3
     val level3GameLevel = GameLevel.LEVEL3
 
-
     class LevelSelectViewModelFactory(private val context: Context) :
         ViewModelProvider.Factory {
+
+        @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass == LevelSelectViewModel::class.java) return LevelSelectViewModel(
                 context
