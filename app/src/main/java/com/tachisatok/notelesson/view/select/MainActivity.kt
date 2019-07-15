@@ -17,7 +17,7 @@ class MainActivity : BaseActivity() {
 
         val binding = DataBindingUtil.setContentView<MainActivityBinding>(this, R.layout.main_activity)
         binding.viewModel =
-            ViewModelProviders.of(this, LevelSelectViewModelFactory(this)).get(LevelSelectViewModel::class.java)
+            ViewModelProviders.of(this, LevelSelectViewModel.LevelSelectViewModelFactory(this)).get(LevelSelectViewModel::class.java)
     }
 
     /**
