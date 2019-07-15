@@ -15,10 +15,19 @@ enum class Character(
     @StringRes val chinese: Int,
     @StringRes val japanese: Int
 ) {
+    /**
+     * レベル選択画面
+     */
     PLEASE_SELECT_LEVEL(R.string.please_select_level, R.string.please_select_level_jp),
     LEVEL_1(R.string.level_1, R.string.level_1_jp),
     LEVEL_2(R.string.level_2, R.string.level_2_jp),
     LEVEL_3(R.string.level_3, R.string.level_3_jp),
+
+    /**
+     * 範囲選択画面
+     */
+    PLEASE_SELECT_RANGE(R.string.please_select_range, R.string.please_select_range_jp),
+
     /** ド */
     C(R.string.c, R.string.c_jp),
     /** レ */
