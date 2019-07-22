@@ -1,7 +1,8 @@
 package com.tachisatok.notelesson.view.select.usecase
 
 import com.tachisatok.notelesson.constant.GameLevel
-import com.tachisatok.notelesson.constant.GameRange
+import com.tachisatok.notelesson.constant.ScaleRange
+import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
 
 class RangeSelectItemCreator(private val gameLevel: GameLevel) {
 
@@ -10,16 +11,26 @@ class RangeSelectItemCreator(private val gameLevel: GameLevel) {
      *
      * @return リストアイテム
      */
-    fun getGClefItem(): List<GameRange> {
-        return when(gameLevel) {
+    fun getGClefItem(): List<RangeSelectHorizontalItemData> {
+        return when (gameLevel) {
             GameLevel.LEVEL1 -> {
-                listOf(GameRange.LEVEL1_G_CLEF1, GameRange.LEVEL1_G_CLEF2, GameRange.LEVEL1_G_CLEF3)
+                listOf(
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE4_E),
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE4_G),
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE5_C)
+                )
             }
             GameLevel.LEVEL2 -> {
-                listOf(GameRange.LEVEL2_G_CLEF1, GameRange.LEVEL2_G_CLEF2, GameRange.LEVEL2_G_CLEF3)
+                listOf(
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE5_C_TO_OCTAVE5_E),
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE5_C_TO_OCTAVE5_G),
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE5_C_TO_OCTAVE6_C)
+                )
             }
             GameLevel.LEVEL3 -> {
-                listOf(GameRange.LEVEL3_G_CLEF1)
+                listOf(
+                    RangeSelectHorizontalItemData(gClefScaleRange = ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE6_C)
+                )
             }
         }
     }
@@ -29,16 +40,26 @@ class RangeSelectItemCreator(private val gameLevel: GameLevel) {
      *
      * @return リストアイテム
      */
-    fun getFClefItem(): List<GameRange> {
-        return when(gameLevel) {
+    fun getFClefItem(): List<RangeSelectHorizontalItemData> {
+        return when (gameLevel) {
             GameLevel.LEVEL1 -> {
-                listOf(GameRange.LEVEL1_F_CLEF1, GameRange.LEVEL1_F_CLEF2, GameRange.LEVEL1_F_CLEF3)
+                listOf(
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE3_A_TO_OCTAVE4_C),
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE3_F_TO_OCTAVE4_C),
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE3_C_TO_OCTAVE4_C)
+                )
             }
             GameLevel.LEVEL2 -> {
-                listOf(GameRange.LEVEL2_F_CLEF1, GameRange.LEVEL2_F_CLEF2, GameRange.LEVEL2_F_CLEF3)
+                listOf(
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE2_A_TO_OCTAVE3_C),
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE2_F_TO_OCTAVE3_C),
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE2_C_TO_OCTAVE3_C)
+                )
             }
             GameLevel.LEVEL3 -> {
-                listOf(GameRange.LEVEL3_F_CLEF1)
+                listOf(
+                    RangeSelectHorizontalItemData(fClefScaleRange = ScaleRange.F_CLEF_OCTAVE2_C_TO_OCTAVE4_C)
+                )
             }
         }
     }
@@ -48,16 +69,26 @@ class RangeSelectItemCreator(private val gameLevel: GameLevel) {
      *
      * @return リストアイテム
      */
-    fun getGClefAndFClefItem(): List<GameRange> {
-        return when(gameLevel) {
+    fun getGClefAndFClefItem(): List<RangeSelectHorizontalItemData> {
+        return when (gameLevel) {
             GameLevel.LEVEL1 -> {
-                listOf(GameRange.LEVEL1_G_AND_F_CLEF1, GameRange.LEVEL1_G_AND_F_CLEF2, GameRange.LEVEL1_G_AND_F_CLEF3)
+                listOf(
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE4_E, ScaleRange.F_CLEF_OCTAVE3_A_TO_OCTAVE4_C),
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE4_G, ScaleRange.F_CLEF_OCTAVE3_F_TO_OCTAVE4_C),
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE5_C, ScaleRange.F_CLEF_OCTAVE3_C_TO_OCTAVE4_C)
+                )
             }
             GameLevel.LEVEL2 -> {
-                listOf(GameRange.LEVEL2_G_AND_F_CLEF1, GameRange.LEVEL2_G_AND_F_CLEF2, GameRange.LEVEL2_G_AND_F_CLEF3)
+                listOf(
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE5_C_TO_OCTAVE5_E, ScaleRange.F_CLEF_OCTAVE2_A_TO_OCTAVE3_C),
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE5_C_TO_OCTAVE5_G, ScaleRange.F_CLEF_OCTAVE2_F_TO_OCTAVE3_C),
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE5_C_TO_OCTAVE6_C, ScaleRange.F_CLEF_OCTAVE2_C_TO_OCTAVE3_C)
+                )
             }
             GameLevel.LEVEL3 -> {
-                listOf(GameRange.LEVEL3_G_AND_F_CLEF1)
+                listOf(
+                    RangeSelectHorizontalItemData(ScaleRange.G_CLEF_OCTAVE4_C_TO_OCTAVE6_C, ScaleRange.F_CLEF_OCTAVE2_C_TO_OCTAVE4_C)
+                )
             }
         }
     }

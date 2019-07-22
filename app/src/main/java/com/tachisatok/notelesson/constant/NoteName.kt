@@ -3,23 +3,23 @@ package com.tachisatok.notelesson.constant
 /**
  * 音名を表すEnum
  *
- * @property character よみがな
+ * @property characters よみがな
  */
 enum class NoteName(
-    val character: Character
+    val characters: Characters
 ) {
     /** ド */
-    C(Character.C),
+    C(Characters.C),
     /** レ */
-    D(Character.D),
+    D(Characters.D),
     /** ミ */
-    E(Character.E),
+    E(Characters.E),
     /** ファ */
-    F(Character.F),
+    F(Characters.F),
     /** ソ */
-    G(Character.G),
+    G(Characters.G),
     /** ラ */
-    A(Character.A),
+    A(Characters.A),
     /** シ */
-    B(Character.B)
+    B(Characters.B)
 }

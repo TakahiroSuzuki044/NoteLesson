@@ -11,7 +11,7 @@ import com.tachisatok.notelesson.util.PreferenceUtil
  * @property chinese 漢字読み
  * @property japanese ひらがな読み
  */
-enum class Character(
+enum class Characters(
     @StringRes val chinese: Int,
     @StringRes val japanese: Int
 ) {

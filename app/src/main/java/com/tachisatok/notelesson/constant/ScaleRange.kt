@@ -3,16 +3,16 @@ package com.tachisatok.notelesson.constant
 /**
  * 出題する音階の範囲を管理するEnum
  *
- * @property character よみがな
+ * @property characters よみがな
  * @property scaleList 音階リスト
  */
 enum class ScaleRange(
-    private val character: Character,
-    private val scaleList: List<Scale>
+        val characters: Characters,
+        val scaleList: List<Scale>
 ) {
     // LEVEL1
     G_CLEF_OCTAVE4_C_TO_OCTAVE4_E(
-        Character.C_TO_E,
+        Characters.C_TO_E,
         listOf(
             Scale.G_CLEF_OCTAVE4_C,
             Scale.G_CLEF_OCTAVE4_D,
@@ -20,7 +20,7 @@ enum class ScaleRange(
         )
     ),
     G_CLEF_OCTAVE4_C_TO_OCTAVE4_G(
-        Character.C_TO_G,
+        Characters.C_TO_G,
         listOf(
             Scale.G_CLEF_OCTAVE4_C,
             Scale.G_CLEF_OCTAVE4_D,
@@ -30,7 +30,7 @@ enum class ScaleRange(
         )
     ),
     G_CLEF_OCTAVE4_C_TO_OCTAVE5_C(
-        Character.C_TO_C,
+        Characters.C_TO_C,
         listOf(
             Scale.G_CLEF_OCTAVE4_C,
             Scale.G_CLEF_OCTAVE4_D,
@@ -43,7 +43,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE3_A_TO_OCTAVE4_C(
-        Character.A_TO_C,
+        Characters.A_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE3_A,
             Scale.F_CLEF_OCTAVE3_B,
@@ -51,7 +51,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE3_F_TO_OCTAVE4_C(
-        Character.F_TO_C,
+        Characters.F_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE3_F,
             Scale.F_CLEF_OCTAVE3_G,
@@ -61,7 +61,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE3_C_TO_OCTAVE4_C(
-        Character.C_TO_C,
+        Characters.C_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE3_C,
             Scale.F_CLEF_OCTAVE3_D,
@@ -76,7 +76,7 @@ enum class ScaleRange(
 
     // LEVEL2
     G_CLEF_OCTAVE5_C_TO_OCTAVE5_E(
-        Character.C_TO_E,
+        Characters.C_TO_E,
         listOf(
             Scale.G_CLEF_OCTAVE5_C,
             Scale.G_CLEF_OCTAVE5_D,
@@ -84,7 +84,7 @@ enum class ScaleRange(
         )
     ),
     G_CLEF_OCTAVE5_C_TO_OCTAVE5_G(
-        Character.C_TO_G,
+        Characters.C_TO_G,
         listOf(
             Scale.G_CLEF_OCTAVE5_C,
             Scale.G_CLEF_OCTAVE5_D,
@@ -94,7 +94,7 @@ enum class ScaleRange(
         )
     ),
     G_CLEF_OCTAVE5_C_TO_OCTAVE6_C(
-        Character.C_TO_C,
+        Characters.C_TO_C,
         listOf(
             Scale.G_CLEF_OCTAVE5_C,
             Scale.G_CLEF_OCTAVE5_D,
@@ -107,7 +107,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE2_A_TO_OCTAVE3_C(
-        Character.A_TO_C,
+        Characters.A_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE2_A,
             Scale.F_CLEF_OCTAVE2_B,
@@ -115,7 +115,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE2_F_TO_OCTAVE3_C(
-        Character.F_TO_C,
+        Characters.F_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE2_F,
             Scale.F_CLEF_OCTAVE2_G,
@@ -125,7 +125,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE2_C_TO_OCTAVE3_C(
-        Character.C_TO_C,
+        Characters.C_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE2_C,
             Scale.F_CLEF_OCTAVE2_D,
@@ -140,7 +140,7 @@ enum class ScaleRange(
 
     // LEVEL3
     G_CLEF_OCTAVE4_C_TO_OCTAVE6_C(
-        Character.C_TO_C,
+        Characters.C_TO_C,
         listOf(
             Scale.G_CLEF_OCTAVE4_C,
             Scale.G_CLEF_OCTAVE4_D,
@@ -160,7 +160,7 @@ enum class ScaleRange(
         )
     ),
     F_CLEF_OCTAVE2_C_TO_OCTAVE4_C(
-        Character.C_TO_C,
+        Characters.C_TO_C,
         listOf(
             Scale.F_CLEF_OCTAVE2_C,
             Scale.F_CLEF_OCTAVE2_D,

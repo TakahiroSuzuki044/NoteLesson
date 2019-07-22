@@ -3,20 +3,20 @@ package com.tachisatok.notelesson.view.select
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.tachisatok.notelesson.constant.Character
+import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.GameLevel
-import com.tachisatok.notelesson.constant.GameRange
 import com.tachisatok.notelesson.view.select.usecase.RangeSelectItemCreator
 
 class RangeSelectViewModel(context: Context, gameLevel: GameLevel) : ViewModel() {
 
-    val pleaseSelectRangeText = Character.PLEASE_SELECT_RANGE.getString(context)
-    val gClefText = Character.G_CLEF.getString(context)
-    val fClefText = Character.F_CLEF.getString(context)
+    val pleaseSelectRangeText = Characters.PLEASE_SELECT_RANGE.getString(context)
+    val gClefText = Characters.G_CLEF.getString(context)
+    val fClefText = Characters.F_CLEF.getString(context)
     val gClefAndFClefText = "${gClefText}と$fClefText"
-    val gClefList: List<GameRange>
-    val fClefList: List<GameRange>
-    val gClefAndFClefList: List<GameRange>
+
+    val gClefList: List<RangeSelectHorizontalItemData>
+    val fClefList: List<RangeSelectHorizontalItemData>
+    val gClefAndFClefList: List<RangeSelectHorizontalItemData>
 
     init {
         val rangeSelectItemCreator = RangeSelectItemCreator(gameLevel)

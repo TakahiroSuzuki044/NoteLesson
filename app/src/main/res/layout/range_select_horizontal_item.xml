@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools"
+                                   android:id="@+id/range_select_horizontal_item_root_layout"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:background="@color/white"
+                                   android:clickable="true"
+                                   android:focusable="true"
+                                   android:gravity="center"
+                                   android:orientation="vertical"
+                                   android:padding="16dp"
+                                   android:stateListAnimator="@animator/rise_button_layout"
+                                   app:cardCornerRadius="@dimen/card_radius"
+                                   app:cardElevation="@dimen/button_elevation"
+                                   app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ト音記号 -->
+        <LinearLayout
+            android:id="@+id/range_select_horizontal_item_g_clef_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/g_clef"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:id="@+id/range_select_horizontal_item_g_clef_text_view"
+                style="@style/large_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tools:text="ド〜ファ"/>
+        </LinearLayout>
+
+        <!-- ヘ音記号 -->
+        <LinearLayout
+            android:id="@+id/range_select_horizontal_item_f_clef_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/f_clef"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:id="@+id/range_select_horizontal_item_f_clef_text_view"
+                style="@style/large_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tools:text="ド〜ファ"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -15,8 +15,8 @@
     <string name="level_3_jp">れべる★★★</string>
 
     <!-- 範囲選択画面 -->
-    <string name="please_select_range">選ぶとゲームが始まるよ！</string>
-    <string name="please_select_range_jp">えらぶとげーむがはじまるよ！</string>
+    <string name="please_select_range">選ぶとゲームが\n始まるよ！</string>
+    <string name="please_select_range_jp">えらぶとげーむが\nはじまるよ！</string>
 
     <!-- 記号 -->
     <string name="g_clef">ト音記号</string>
