@@ -2,8 +2,8 @@
     <string name="app_name">NoteLesson</string>
 
     <!-- レベル選択画面 -->
-    <string name="please_select_level">レベルを選んでね</string>
-    <string name="please_select_level_jp">れべるをえらんでね</string>
+    <string name="please_select_level">レベルを選んでね！</string>
+    <string name="please_select_level_jp">れべるをえらんでね！</string>
 
     <string name="level_1">レベル★</string>
     <string name="level_1_jp">れべる★</string>
@@ -15,8 +15,8 @@
     <string name="level_3_jp">れべる★★★</string>
 
     <!-- 範囲選択画面 -->
-    <string name="please_select_range">選ぶとゲームが\n始まるよ！</string>
-    <string name="please_select_range_jp">えらぶとげーむが\nはじまるよ！</string>
+    <string name="please_select_range">練習する音の\n範囲を選んでね！</string>
+    <string name="please_select_range_jp">れんしゅうするおとの\nはんいをえらんでね！</string>
 
     <!-- 記号 -->
     <string name="g_clef">ト音記号</string>
