@@ -7,22 +7,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.constant.Clef
-import com.tachisatok.notelesson.view.ui.OnClickCallback
+import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_horizontal_item.view.*
 
 class RangeSelectHorizontalRecyclerAdapter(
         private val context: Context,
         private val items: List<RangeSelectHorizontalItemData>,
-        private val clickCallback: OnClickCallback
+        private val itemClickCallback: OnItemClickCallback
 ) : RecyclerView.Adapter<RangeSelectHorizontalRecyclerAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return when (ItemType.of(viewType)) {
             ItemType.SINGLE -> {
-                SingleViewHolder.getHolder(context, parent, clickCallback)
+                SingleViewHolder.getHolder(context, parent, itemClickCallback)
             }
             ItemType.DOUBLE -> {
-                DoubleViewHolder.getHolder(context, parent, clickCallback)
+                DoubleViewHolder.getHolder(context, parent, itemClickCallback)
             }
         }
     }
@@ -46,13 +46,13 @@ class RangeSelectHorizontalRecyclerAdapter(
     private class SingleViewHolder private constructor(
             view: View,
             private val context: Context,
-            private val clickCallback: OnClickCallback) : ItemViewHolder(view) {
+            private val itemClickCallback: OnItemClickCallback) : ItemViewHolder(view) {
 
         companion object {
             @JvmStatic
-            fun getHolder(context: Context, parent: ViewGroup, clickCallback: OnClickCallback): SingleViewHolder {
+            fun getHolder(context: Context, parent: ViewGroup, itemClickCallback: OnItemClickCallback): SingleViewHolder {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.range_select_horizontal_item, parent, false)
-                return SingleViewHolder(view, context, clickCallback)
+                return SingleViewHolder(view, context, itemClickCallback)
             }
         }
 
@@ -64,7 +64,7 @@ class RangeSelectHorizontalRecyclerAdapter(
                     this.itemView.range_select_horizontal_item_g_clef_linear_layout.visibility = View.VISIBLE
                     this.itemView.range_select_horizontal_item_g_clef_text_view.text = item.gClefScaleRange?.characters?.getString(context)
                     this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
-                        clickCallback.onClick(it, item, position)
+                        itemClickCallback.onItemClick(it, item, position)
                     }
                 }
                 Clef.F_CLEF -> {
@@ -72,7 +72,7 @@ class RangeSelectHorizontalRecyclerAdapter(
                     this.itemView.range_select_horizontal_item_f_clef_linear_layout.visibility = View.VISIBLE
                     this.itemView.range_select_horizontal_item_f_clef_text_view.text = item.fClefScaleRange?.characters?.getString(context)
                     this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
-                        clickCallback.onClick(it, item, position)
+                        itemClickCallback.onItemClick(it, item, position)
                     }
                 }
             }
@@ -82,13 +82,13 @@ class RangeSelectHorizontalRecyclerAdapter(
     private class DoubleViewHolder private constructor(
             view: View,
             private val context: Context,
-            private val clickCallback: OnClickCallback) : ItemViewHolder(view) {
+            private val itemClickCallback: OnItemClickCallback) : ItemViewHolder(view) {
 
         companion object {
             @JvmStatic
-            fun getHolder(context: Context, parent: ViewGroup, clickCallback: OnClickCallback): DoubleViewHolder {
+            fun getHolder(context: Context, parent: ViewGroup, itemClickCallback: OnItemClickCallback): DoubleViewHolder {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.range_select_horizontal_item, parent, false)
-                return DoubleViewHolder(view, context, clickCallback)
+                return DoubleViewHolder(view, context, itemClickCallback)
             }
         }
 
@@ -96,7 +96,7 @@ class RangeSelectHorizontalRecyclerAdapter(
             this.itemView.range_select_horizontal_item_g_clef_text_view.text = item.gClefScaleRange?.characters?.getString(context)
             this.itemView.range_select_horizontal_item_f_clef_text_view.text = item.fClefScaleRange?.characters?.getString(context)
             this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
-                clickCallback.onClick(it, item, position)
+                itemClickCallback.onItemClick(it, item, position)
             }
         }
     }

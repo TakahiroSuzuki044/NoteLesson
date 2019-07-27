@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.constant.Characters
-import com.tachisatok.notelesson.view.ui.OnClickCallback
+import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_item_horizontal_recycler_view.view.*
 import kotlinx.android.synthetic.main.range_select_item_section.view.*
 import kotlinx.android.synthetic.main.range_select_item_title.view.*
@@ -18,7 +18,7 @@ class RangeSelectRecyclerAdapter(
         private val gClefList: List<RangeSelectHorizontalItemData>,
         private val fClefList: List<RangeSelectHorizontalItemData>,
         private val gClefAndFClefList: List<RangeSelectHorizontalItemData>,
-        private val clickCallback: OnClickCallback
+        private val itemClickCallback: OnItemClickCallback
 ) : RecyclerView.Adapter<RangeSelectRecyclerAdapter.ItemViewHolder>() {
 
     private val itemAlgorithm: ItemAlgorithm
@@ -31,7 +31,7 @@ class RangeSelectRecyclerAdapter(
         return when (ViewHolderType.of(viewType)) {
             ViewHolderType.TITLE -> TitleViewHolder.getHolder(parent)
             ViewHolderType.SECTION -> SectionViewHolder.getHolder(parent)
-            ViewHolderType.RANGE_ITEMS -> HorizontalRecyclerViewHolder.getHolder(parent, context, clickCallback)
+            ViewHolderType.RANGE_ITEMS -> HorizontalRecyclerViewHolder.getHolder(parent, context, itemClickCallback)
         }
     }
 
@@ -106,20 +106,20 @@ class RangeSelectRecyclerAdapter(
     private class HorizontalRecyclerViewHolder private constructor(
             view: View,
             private val context: Context,
-            private val clickCallback: OnClickCallback
+            private val itemClickCallback: OnItemClickCallback
     ) : ItemViewHolder(view) {
 
         companion object {
             @JvmStatic
-            fun getHolder(parent: ViewGroup, context: Context, clickCallback: OnClickCallback): HorizontalRecyclerViewHolder {
+            fun getHolder(parent: ViewGroup, context: Context, itemClickCallback: OnItemClickCallback): HorizontalRecyclerViewHolder {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.range_select_item_horizontal_recycler_view, parent, false)
-                return HorizontalRecyclerViewHolder(view, context, clickCallback)
+                return HorizontalRecyclerViewHolder(view, context, itemClickCallback)
             }
         }
 
         override fun onBind(itemData: ItemData, position: Int) {
             val layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            val adapter = RangeSelectHorizontalRecyclerAdapter(context, itemData.clefList!!, clickCallback)
+            val adapter = RangeSelectHorizontalRecyclerAdapter(context, itemData.clefList!!, itemClickCallback)
             this.itemView.range_select_item_horizontal_recycler_view_root.layoutManager = layoutManager
             this.itemView.range_select_item_horizontal_recycler_view_root.adapter = adapter
         }

@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.constant.GameLevel
 import com.tachisatok.notelesson.view.base.BaseActivity
+import com.tachisatok.notelesson.view.game.GameActivity
 import com.tachisatok.notelesson.view.select.usecase.RangeSelectItemCreator
-import com.tachisatok.notelesson.view.ui.OnClickCallback
+import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_activity.*
 
-class RangeSelectActivity : BaseActivity(), OnClickCallback {
+class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
 
     private val gameLevel by lazy { intent.getSerializableExtra(INTENT_KEY_GAME_LEVEL) as GameLevel }
 
@@ -33,9 +34,12 @@ class RangeSelectActivity : BaseActivity(), OnClickCallback {
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
 
-    override fun onClick(view: View, item: Any, position: Int) {
+    override fun onItemClick(view: View, item: Any, position: Int) {
+        if (item is RangeSelectHorizontalItemData) {
+            val intent = GameActivity.newIntent(this, item)
+            startActivity(intent)
+        }
     }
-
 
     companion object {
         /**

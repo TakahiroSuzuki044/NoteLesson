@@ -5,6 +5,12 @@
               android:background="?attr/colorBase"
               android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/range_select_activity_recycler_view"
         android:layout_width="match_parent"
