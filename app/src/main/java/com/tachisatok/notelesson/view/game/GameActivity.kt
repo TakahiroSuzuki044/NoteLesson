@@ -15,6 +15,11 @@ class GameActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.game_activity)
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.game_activity_content, GamePlayingFragment())
+            commit()
+        }
     }
 
     companion object {
