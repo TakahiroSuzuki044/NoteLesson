@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                   xmlns:tools="http://schemas.android.com/tools"
-                                   android:id="@+id/range_select_horizontal_item_root_layout"
-                                   android:layout_width="wrap_content"
-                                   android:layout_height="wrap_content"
-                                   app:cardBackgroundColor="@color/white"
-                                   android:clickable="true"
-                                   android:focusable="true"
-                                   android:gravity="center"
-                                   android:orientation="vertical"
-                                   android:foreground="?android:attr/selectableItemBackground"
-                                   android:stateListAnimator="@animator/rise_button_layout"
-                                   app:cardCornerRadius="@dimen/card_radius"
-                                   app:cardElevation="@dimen/button_elevation"
-                                   app:cardUseCompatPadding="true">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:id="@+id/range_select_horizontal_item_root_layout"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="8dp"
+             android:layout_marginTop="8dp"
+             android:layout_marginRight="8dp"
+             android:layout_marginBottom="8dp"
+             android:background="@drawable/shape_level_select_layout"
+             android:clickable="true"
+             android:elevation="@dimen/button_elevation"
+             android:focusable="true"
+             android:gravity="center"
+             android:orientation="vertical"
+             android:stateListAnimator="@animator/rise_button_layout">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
                 android:textStyle="bold"
                 tools:text="ド〜ファ"/>
         </LinearLayout>
+
     </LinearLayout>
 
-
-</androidx.cardview.widget.CardView>
+</FrameLayout>

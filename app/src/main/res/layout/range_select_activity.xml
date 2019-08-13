@@ -14,7 +14,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/range_select_activity_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
