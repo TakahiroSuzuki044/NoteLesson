@@ -51,6 +51,6 @@
 
     <color name="text_color">#262622</color>
     <color name="white">#ffffff</color>
-    <color name="ripple_white">#e0e0e0</color>
+    <color name="ripple_white">#c7c7c7</color>
 
 </resources>
