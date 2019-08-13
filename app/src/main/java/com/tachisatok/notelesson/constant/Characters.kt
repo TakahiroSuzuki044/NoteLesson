@@ -28,6 +28,11 @@ enum class Characters(
      */
     PLEASE_SELECT_RANGE(R.string.please_select_range, R.string.please_select_range_jp),
 
+    /**
+     * ゲーム中画面
+     */
+    REMAINING_TIME_LABEL(R.string.remaining_time_label, R.string.remaining_time_label_jp),
+
     /** ド */
     C(R.string.c, R.string.c_jp),
     /** レ */

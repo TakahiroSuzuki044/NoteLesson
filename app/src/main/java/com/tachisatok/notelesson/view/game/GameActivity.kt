@@ -9,7 +9,7 @@ import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
 
 class GameActivity : BaseActivity() {
 
-    val itemData by lazy { (intent.getSerializableExtra(INTENT_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
+    private val itemData by lazy { (intent.getSerializableExtra(INTENT_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class GameActivity : BaseActivity() {
         setContentView(R.layout.game_activity)
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.game_activity_content, GamePlayingFragment())
+            replace(R.id.game_activity_content, GamePlayingFragment.getInstance(itemData))
             commit()
         }
     }
@@ -26,7 +26,7 @@ class GameActivity : BaseActivity() {
         /**
          * INTENT KEY：選択した[RangeSelectHorizontalItemData]
          */
-        private const val INTENT_KEY_ITEM_DATA = "intent_key_range_select_horizontal_item_data"
+        private const val INTENT_KEY_ITEM_DATA = "intent_key_item_data"
 
         /**
          * [GameActivity]を起動するIntentを返却する

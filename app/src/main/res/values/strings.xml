@@ -63,4 +63,8 @@
     <string name="f_to_c">ファ〜ド</string>
     <string name="f_to_c_jp">ふぁ〜ど</string>
 
+    <!-- ゲーム中画面 -->
+    <string name="remaining_time_label">残り時間：</string>
+    <string name="remaining_time_label_jp">のこりじかん：</string>
+
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:showIn="@layout/game_playing_fragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tachisatok.notelesson.view.game.GamePlayingViewModel"/>
+
+        <variable
+            name="scale"
+            type="com.tachisatok.notelesson.constant.Scale"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_level_select_layout"
+        android:clickable="true"
+        android:elevation="@dimen/button_elevation"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{(view) -> viewModel.onClickAnswer(view)}"
+        android:stateListAnimator="@animator/rise_button_layout"
+        android:tag="@{scale}">
+
+        <TextView
+            style="@style/large_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{scale.noteName.characters.getString(context)}"
+            tools:text="@string/c"/>
+
+    </FrameLayout>
+</layout>

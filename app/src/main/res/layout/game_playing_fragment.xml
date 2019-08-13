@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,10 +16,168 @@
         android:background="?attr/colorBase"
         android:orientation="vertical">
 
-        <TextView
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:text="GamePlaying"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="0.4"
+                android:background="@drawable/shape_level_select_layout"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/game_playing_fragment_remaining_time_label_text_view"
+                    style="@style/default_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:text="残り時間："/>
+
+                <TextView
+                    android:id="@+id/game_playing_fragment_remaining_time_text_view"
+                    style="@style/default_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/game_playing_fragment_remaining_time_label_text_view"
+                    tools:text="20"/>
+
+                <TextView
+                    android:id="@+id/game_playing_fragment_correct_answer_label_text_view"
+                    style="@style/default_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/game_playing_fragment_remaining_time_label_text_view"
+                    tools:text="正解数："/>
+
+                <TextView
+                    android:id="@+id/game_playing_fragment_correct_answer_text_view"
+                    style="@style/default_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/game_playing_fragment_correct_answer_label_text_view"
+                    android:layout_toRightOf="@+id/game_playing_fragment_correct_answer_label_text_view"
+                    tools:text="10"/>
+
+                <ImageView
+                    android:id="@+id/game_playing_fragment_clef_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    tools:src="@mipmap/g_clef_octave4_c"/>
+
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingTop="40dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="40dp">
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:paddingEnd="@dimen/center_answer_padding"
+                        android:paddingBottom="@dimen/center_answer_padding">
+
+                        <include
+                            layout="@layout/game_playing_answer_layout"
+                            android:clipChildren="false"
+                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:viewModel="@{viewModel}"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:paddingStart="@dimen/center_answer_padding"
+                        android:paddingBottom="@dimen/center_answer_padding">
+
+                        <include
+                            layout="@layout/game_playing_answer_layout"
+                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:viewModel="@{viewModel}"/>
+
+                    </FrameLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:paddingTop="@dimen/center_answer_padding"
+                        android:paddingEnd="@dimen/center_answer_padding">
+
+                        <include
+                            layout="@layout/game_playing_answer_layout"
+                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:viewModel="@{viewModel}"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:paddingStart="@dimen/center_answer_padding"
+                        android:paddingTop="@dimen/center_answer_padding">
+
+                        <include
+                            layout="@layout/game_playing_answer_layout"
+                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:viewModel="@{viewModel}"/>
+
+                    </FrameLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
+
 </layout>
