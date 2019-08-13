@@ -21,7 +21,6 @@
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{(view) -> viewModel.onClickAnswer(view)}"
         android:stateListAnimator="@animator/rise_button_layout"
         android:tag="@{scale}">
