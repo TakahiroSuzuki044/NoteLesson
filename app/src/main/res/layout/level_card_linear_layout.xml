@@ -27,7 +27,6 @@
         android:clickable="true"
         android:elevation="@dimen/button_elevation"
         android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
         android:onClick="onClickMoveToRangeSelect"
         android:padding="12dp"
         android:stateListAnimator="@animator/rise_button_layout"
