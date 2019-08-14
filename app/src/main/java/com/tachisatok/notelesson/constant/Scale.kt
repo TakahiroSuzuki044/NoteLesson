@@ -49,5 +49,12 @@ enum class Scale(
     G_CLEF_OCTAVE5_G(Clef.G_CLEF, Octave.FIVE, NoteName.G, R.mipmap.g_clef_octave5_g),
     G_CLEF_OCTAVE5_A(Clef.G_CLEF, Octave.FIVE, NoteName.A, R.mipmap.g_clef_octave5_a),
     G_CLEF_OCTAVE5_B(Clef.G_CLEF, Octave.FIVE, NoteName.B, R.mipmap.g_clef_octave5_b),
-    G_CLEF_OCTAVE6_C(Clef.G_CLEF, Octave.SIX, NoteName.C, R.mipmap.g_clef_octave6_c),
+    G_CLEF_OCTAVE6_C(Clef.G_CLEF, Octave.SIX, NoteName.C, R.mipmap.g_clef_octave6_c);
+
+    companion object {
+        @JvmStatic
+        fun of(clef: Clef, noteName: NoteName): Scale {
+            return values().first { it.clef == clef && it.noteName == noteName }
+        }
+    }
 }

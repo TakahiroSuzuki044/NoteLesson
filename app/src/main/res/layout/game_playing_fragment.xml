@@ -110,7 +110,7 @@
                         <include
                             layout="@layout/game_playing_answer_layout"
                             android:clipChildren="false"
-                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:scale="@{viewModel.answerChoiceScale1}"
                             app:viewModel="@{viewModel}"/>
 
                     </FrameLayout>
@@ -126,7 +126,7 @@
 
                         <include
                             layout="@layout/game_playing_answer_layout"
-                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:scale="@{viewModel.answerChoiceScale2}"
                             app:viewModel="@{viewModel}"/>
 
                     </FrameLayout>
@@ -151,7 +151,7 @@
 
                         <include
                             layout="@layout/game_playing_answer_layout"
-                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:scale="@{viewModel.answerChoiceScale3}"
                             app:viewModel="@{viewModel}"/>
 
                     </FrameLayout>
@@ -167,7 +167,7 @@
 
                         <include
                             layout="@layout/game_playing_answer_layout"
-                            app:scale="@{viewModel.answerCandidateScale1}"
+                            app:scale="@{viewModel.answerChoiceScale4}"
                             app:viewModel="@{viewModel}"/>
 
                     </FrameLayout>
