@@ -25,62 +25,78 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipChildren="false"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_weight="0.4"
-                android:background="@drawable/shape_level_select_layout"
-                android:padding="16dp"
-                app:startAnim="@{viewModel.failCount}">
+                android:clipChildren="false">
 
-                <TextView
-                    android:id="@+id/game_playing_fragment_remaining_time_label_text_view"
-                    style="@style/default_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    tools:text="残り時間："/>
-
-                <TextView
-                    android:id="@+id/game_playing_fragment_remaining_time_text_view"
-                    style="@style/default_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/game_playing_fragment_remaining_time_label_text_view"
-                    tools:text="20"/>
-
-                <TextView
-                    android:id="@+id/game_playing_fragment_correct_answer_label_text_view"
-                    style="@style/default_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/game_playing_fragment_remaining_time_label_text_view"
-                    tools:text="正解数："/>
-
-                <TextView
-                    android:id="@+id/game_playing_fragment_correct_answer_text_view"
-                    style="@style/default_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/game_playing_fragment_correct_answer_label_text_view"
-                    android:layout_toRightOf="@+id/game_playing_fragment_correct_answer_label_text_view"
-                    tools:text="10"/>
-
-                <ImageView
-                    android:id="@+id/game_playing_fragment_clef_image_view"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    app:imageSrc="@{viewModel.questionImageRes}"
-                    tools:src="@mipmap/g_clef_octave4_c"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/shape_level_select_layout"
+                    android:padding="16dp"
+                    app:startFailAnim="@{viewModel.failCount}">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/game_playing_fragment_remaining_time_label_text_view"
+                        style="@style/default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        tools:text="残り時間："/>
+
+                    <TextView
+                        android:id="@+id/game_playing_fragment_remaining_time_text_view"
+                        style="@style/default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/game_playing_fragment_remaining_time_label_text_view"
+                        tools:text="20"/>
+
+                    <TextView
+                        android:id="@+id/game_playing_fragment_correct_answer_label_text_view"
+                        style="@style/default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/game_playing_fragment_remaining_time_label_text_view"
+                        tools:text="正解数："/>
+
+                    <TextView
+                        android:id="@+id/game_playing_fragment_correct_answer_text_view"
+                        style="@style/default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/game_playing_fragment_correct_answer_label_text_view"
+                        android:layout_toRightOf="@+id/game_playing_fragment_correct_answer_label_text_view"
+                        tools:text="10"/>
+
+                    <ImageView
+                        android:id="@+id/game_playing_fragment_clef_image_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:imageSrc="@{viewModel.questionImageRes}"
+                        tools:src="@mipmap/g_clef_octave4_c"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:startCorrectAnim="@{viewModel.correctCount}"
+                    android:background="@drawable/shape_game_playing_correct"
+                    android:visibility="gone"/>
+
+            </FrameLayout>
 
             <TableLayout
                 android:layout_width="match_parent"

@@ -29,9 +29,14 @@ class GamePlayingViewModel(
     var questionScale: Scale
 
     /**
-     * 失敗回数
+     * 不正解回数
      */
     var failCount = ObservableInt(0)
+
+    /**
+     * 正解回数
+     */
+    var correctCount = ObservableInt(0)
 
     @get:Bindable
     var answerChoiceScale1: Scale? = null
@@ -76,6 +81,7 @@ class GamePlayingViewModel(
             questionScale = gameScaleGenerator.getScale()
             setChoice(questionScale)
             questionImageRes.set(questionScale.imageRes)
+            correctCount.set(correctCount.get() + 1)
             failCount.set(0)
             Toast.makeText(context, "正解！", Toast.LENGTH_SHORT).show()
         } else {
