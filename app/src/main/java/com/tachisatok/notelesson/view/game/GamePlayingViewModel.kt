@@ -39,6 +39,13 @@ class GamePlayingViewModel(
     var correctCount = ObservableInt(0)
 
     @get:Bindable
+    var correctCountStr: String = "0"
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.correctCountStr)
+        }
+
+    @get:Bindable
     var answerChoiceScale1: Scale? = null
         set(value) {
             field = value
@@ -82,6 +89,7 @@ class GamePlayingViewModel(
             setChoice(questionScale)
             questionImageRes.set(questionScale.imageRes)
             correctCount.set(correctCount.get() + 1)
+            correctCountStr = correctCount.get().toString()
             failCount.set(0)
             Toast.makeText(context, "正解！", Toast.LENGTH_SHORT).show()
         } else {

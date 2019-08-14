@@ -32,6 +32,7 @@ enum class Characters(
      * ゲーム中画面
      */
     REMAINING_TIME_LABEL(R.string.remaining_time_label, R.string.remaining_time_label_jp),
+    CORRECT_ANSWER_NUMBER(R.string.correct_answer_number, R.string.correct_answer_number_jp),
 
     /** ド */
     C(R.string.c, R.string.c_jp),

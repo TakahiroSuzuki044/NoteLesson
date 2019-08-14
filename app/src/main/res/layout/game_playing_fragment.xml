@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="characters"
+            type="com.tachisatok.notelesson.constant.Characters"/>
+
+        <variable
             name="viewModel"
             type="com.tachisatok.notelesson.view.game.GamePlayingViewModel"/>
     </data>
@@ -31,14 +35,14 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.4"
+                android:layout_weight="0.45"
                 android:clipChildren="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/shape_level_select_layout"
                     android:padding="16dp"
@@ -67,6 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/game_playing_fragment_remaining_time_label_text_view"
+                        android:text="@{characters.CORRECT_ANSWER_NUMBER.getString(context)}"
                         tools:text="正解数："/>
 
                     <TextView
@@ -76,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBaseline="@+id/game_playing_fragment_correct_answer_label_text_view"
                         android:layout_toRightOf="@+id/game_playing_fragment_correct_answer_label_text_view"
+                        android:text="@{viewModel.correctCountStr}"
                         tools:text="10"/>
 
                     <ImageView
@@ -92,16 +98,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:startCorrectAnim="@{viewModel.correctCount}"
                     android:background="@drawable/shape_game_playing_correct"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    app:startCorrectAnim="@{viewModel.correctCount}"/>
 
             </FrameLayout>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.6"
+                android:layout_weight="0.55"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:paddingStart="16dp"
