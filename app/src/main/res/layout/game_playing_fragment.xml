@@ -35,7 +35,8 @@
                 android:layout_marginEnd="16dp"
                 android:layout_weight="0.4"
                 android:background="@drawable/shape_level_select_layout"
-                android:padding="16dp">
+                android:padding="16dp"
+                app:startAnim="@{viewModel.failCount}">
 
                 <TextView
                     android:id="@+id/game_playing_fragment_remaining_time_label_text_view"

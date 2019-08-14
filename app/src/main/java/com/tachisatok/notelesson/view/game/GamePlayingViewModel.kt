@@ -14,13 +14,24 @@ class GamePlayingViewModel(
     val context: Context,
     gClefScaleRange: ScaleRange?,
     fClefScaleRange: ScaleRange?
-): BaseObservable() {
-    
+) : BaseObservable() {
+
     private val gameScaleGenerator = GameScaleGenerator(gClefScaleRange, fClefScaleRange)
 
+    /**
+     * 出題の画像
+     */
     var questionImageRes = ObservableInt()
 
+    /**
+     * 出題の[Scale]
+     */
     var questionScale: Scale
+
+    /**
+     * 失敗回数
+     */
+    var failCount = ObservableInt(0)
 
     @get:Bindable
     var answerChoiceScale1: Scale? = null
@@ -65,8 +76,10 @@ class GamePlayingViewModel(
             questionScale = gameScaleGenerator.getScale()
             setChoice(questionScale)
             questionImageRes.set(questionScale.imageRes)
+            failCount.set(0)
             Toast.makeText(context, "正解！", Toast.LENGTH_SHORT).show()
         } else {
+            failCount.set(failCount.get() + 1)
             Toast.makeText(context, "間違い！", Toast.LENGTH_SHORT).show()
         }
     }
@@ -83,8 +96,9 @@ class GamePlayingViewModel(
                 questionScale,
                 choiceData.first,
                 choiceData.second,
-                choiceData.third)
-            .shuffled()
+                choiceData.third
+            )
+                .shuffled()
 
         answerChoiceScale1 = choiceList[0]
         answerChoiceScale2 = choiceList[1]
