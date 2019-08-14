@@ -1,8 +1,8 @@
 package com.tachisatok.notelesson.view.game
 
 import android.content.Context
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.ObservableInt
@@ -11,14 +11,12 @@ import com.tachisatok.notelesson.constant.Scale
 import com.tachisatok.notelesson.constant.ScaleRange
 
 class GamePlayingViewModel(
-    context: Context,
+    val context: Context,
     gClefScaleRange: ScaleRange?,
     fClefScaleRange: ScaleRange?
 ): BaseObservable() {
-
-    // 正誤を判定する処理
-
-    val gameScaleGenerator = GameScaleGenerator(gClefScaleRange, fClefScaleRange)
+    
+    private val gameScaleGenerator = GameScaleGenerator(gClefScaleRange, fClefScaleRange)
 
     var questionImageRes = ObservableInt()
 
@@ -52,7 +50,6 @@ class GamePlayingViewModel(
             notifyPropertyChanged(BR.answerChoiceScale4)
         }
 
-
     init {
         // 出題
         questionScale = gameScaleGenerator.getScale()
@@ -64,10 +61,14 @@ class GamePlayingViewModel(
      * 回答
      */
     fun onClickAnswer(view: View) {
-        Log.i("GamePlayingViewModel", view.tag.toString())
-        questionScale = gameScaleGenerator.getScale()
-        setChoice(questionScale)
-        questionImageRes.set(questionScale.imageRes)
+        if (view.tag == questionScale) {
+            questionScale = gameScaleGenerator.getScale()
+            setChoice(questionScale)
+            questionImageRes.set(questionScale.imageRes)
+            Toast.makeText(context, "正解！", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "間違い！", Toast.LENGTH_SHORT).show()
+        }
     }
 
     /**
