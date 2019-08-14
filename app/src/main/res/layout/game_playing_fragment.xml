@@ -76,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    app:imageSrc="@{viewModel.questionImageRes}"
                     tools:src="@mipmap/g_clef_octave4_c"/>
 
             </RelativeLayout>

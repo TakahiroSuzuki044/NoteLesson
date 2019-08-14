@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import androidx.databinding.ObservableInt
 import com.tachisatok.notelesson.BR
 import com.tachisatok.notelesson.constant.Scale
 import com.tachisatok.notelesson.constant.ScaleRange
@@ -15,13 +16,11 @@ class GamePlayingViewModel(
     fClefScaleRange: ScaleRange?
 ): BaseObservable() {
 
-    // 回答候補を作成する処理
     // 正誤を判定する処理
-    // viewを切り替える処理
 
     val gameScaleGenerator = GameScaleGenerator(gClefScaleRange, fClefScaleRange)
 
-    var questionImageRes: Int
+    var questionImageRes = ObservableInt()
 
     var questionScale: Scale
 
@@ -58,7 +57,7 @@ class GamePlayingViewModel(
         // 出題
         questionScale = gameScaleGenerator.getScale()
         setChoice(questionScale)
-        questionImageRes = questionScale.imageRes
+        questionImageRes.set(questionScale.imageRes)
     }
 
     /**
@@ -68,7 +67,7 @@ class GamePlayingViewModel(
         Log.i("GamePlayingViewModel", view.tag.toString())
         questionScale = gameScaleGenerator.getScale()
         setChoice(questionScale)
-        questionImageRes = questionScale.imageRes
+        questionImageRes.set(questionScale.imageRes)
     }
 
     /**

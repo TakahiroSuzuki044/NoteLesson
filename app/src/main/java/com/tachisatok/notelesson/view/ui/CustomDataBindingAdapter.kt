@@ -1,4 +1,4 @@
-package com.tachisatok.notelesson.view.select
+package com.tachisatok.notelesson.view.ui
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
