@@ -36,8 +36,11 @@ class GamePlayingViewModel(
     /**
      * 正解回数
      */
-    var correctCount = ObservableInt(0)
+    var correctCount = 0
 
+    /**
+     * 正解回数の文字列（Viewへの表示用）
+     */
     @get:Bindable
     var correctCountStr: String = "0"
         set(value) {
@@ -95,7 +98,7 @@ class GamePlayingViewModel(
 
         if (second >= 30) {
             gameTimer.cancel()
-            gameEndCallback.onFinish(correctCount.get())
+            gameEndCallback.onFinish(correctCount)
         }
     }
 
@@ -107,8 +110,8 @@ class GamePlayingViewModel(
             questionScale = gameScaleGenerator.getScale()
             setChoice(questionScale)
             questionImageRes.set(questionScale.imageRes)
-            correctCount.set(correctCount.get() + 1)
-            correctCountStr = correctCount.get().toString()
+            correctCount++
+            correctCountStr = correctCount.toString()
             failCount.set(0)
         } else {
             failCount.set(failCount.get() + 1)
