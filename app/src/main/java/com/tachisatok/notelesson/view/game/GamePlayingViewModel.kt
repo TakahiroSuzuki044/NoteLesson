@@ -2,7 +2,6 @@ package com.tachisatok.notelesson.view.game
 
 import android.content.Context
 import android.view.View
-import android.widget.Toast
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.ObservableInt
@@ -12,6 +11,7 @@ import com.tachisatok.notelesson.constant.ScaleRange
 
 class GamePlayingViewModel(
     val context: Context,
+    val gameEndCallback: GameEndCallback,
     gClefScaleRange: ScaleRange?,
     fClefScaleRange: ScaleRange?
 ) : BaseObservable(), GameTimer.Callback {
@@ -92,6 +92,11 @@ class GamePlayingViewModel(
 
     override fun onTime(second: Int) {
         timeCountStr = second.toString()
+
+        if (second >= 30) {
+            gameTimer.cancel()
+            gameEndCallback.onFinish(correctCount.get())
+        }
     }
 
     /**
@@ -105,10 +110,8 @@ class GamePlayingViewModel(
             correctCount.set(correctCount.get() + 1)
             correctCountStr = correctCount.get().toString()
             failCount.set(0)
-            Toast.makeText(context, "正解！", Toast.LENGTH_SHORT).show()
         } else {
             failCount.set(failCount.get() + 1)
-            Toast.makeText(context, "間違い！", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -132,5 +135,14 @@ class GamePlayingViewModel(
         answerChoiceScale2 = choiceList[1]
         answerChoiceScale3 = choiceList[2]
         answerChoiceScale4 = choiceList[3]
+    }
+
+    interface GameEndCallback {
+        /**
+         * ゲームの終了時に実行される
+         *
+         * @param correctCount 正解回数
+         */
+        fun onFinish(correctCount: Int)
     }
 }
