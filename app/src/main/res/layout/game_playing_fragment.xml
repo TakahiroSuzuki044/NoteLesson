@@ -54,6 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
+                        android:text="@{characters.REMAINING_TIME_LABEL.getString(context)}"
                         tools:text="残り時間："/>
 
                     <TextView
@@ -63,6 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_toEndOf="@+id/game_playing_fragment_remaining_time_label_text_view"
+                        android:text="@{viewModel.timeCountStr}"
                         tools:text="20"/>
 
                     <TextView

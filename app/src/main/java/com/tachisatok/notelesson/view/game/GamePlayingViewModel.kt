@@ -14,7 +14,7 @@ class GamePlayingViewModel(
     val context: Context,
     gClefScaleRange: ScaleRange?,
     fClefScaleRange: ScaleRange?
-) : BaseObservable() {
+) : BaseObservable(), GameTimer.Callback {
 
     private val gameScaleGenerator = GameScaleGenerator(gClefScaleRange, fClefScaleRange)
 
@@ -46,6 +46,13 @@ class GamePlayingViewModel(
         }
 
     @get:Bindable
+    var timeCountStr: String = "0"
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.timeCountStr)
+        }
+
+    @get:Bindable
     var answerChoiceScale1: Scale? = null
         set(value) {
             field = value
@@ -73,11 +80,18 @@ class GamePlayingViewModel(
             notifyPropertyChanged(BR.answerChoiceScale4)
         }
 
+    private val gameTimer = GameTimer(this)
+
     init {
         // 出題
         questionScale = gameScaleGenerator.getScale()
         setChoice(questionScale)
         questionImageRes.set(questionScale.imageRes)
+        gameTimer.start()
+    }
+
+    override fun onTime(second: Int) {
+        timeCountStr = second.toString()
     }
 
     /**
