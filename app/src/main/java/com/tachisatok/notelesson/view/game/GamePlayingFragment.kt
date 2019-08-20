@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
@@ -33,7 +32,10 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
     }
 
     override fun onFinish(correctCount: Int) {
-        Toast.makeText(context, "終了！", Toast.LENGTH_SHORT).show()
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.game_activity_content, GameResultFragment.getInstance(itemData, correctCount))
+            commit()
+        }
     }
 
     companion object {

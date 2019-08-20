@@ -11,7 +11,7 @@ import com.tachisatok.notelesson.constant.ScaleRange
 
 class GamePlayingViewModel(
     val context: Context,
-    val gameEndCallback: GameEndCallback,
+    private val gameEndCallback: GameEndCallback,
     gClefScaleRange: ScaleRange?,
     fClefScaleRange: ScaleRange?
 ) : BaseObservable(), GameTimer.Callback {
@@ -26,7 +26,7 @@ class GamePlayingViewModel(
     /**
      * 出題の[Scale]
      */
-    var questionScale: Scale
+    private var questionScale: Scale
 
     /**
      * 不正解回数
