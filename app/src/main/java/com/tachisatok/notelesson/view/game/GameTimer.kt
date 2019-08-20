@@ -4,7 +4,8 @@ import android.os.Handler
 import java.util.*
 
 class GameTimer(
-    private val callback: Callback
+    private val callback: Callback,
+    private val countDownTime: Int
 ) {
 
     private val timer = Timer()
@@ -15,9 +16,9 @@ class GameTimer(
     fun start() {
         val handler = Handler()
         val task = object : TimerTask() {
-            var count = 0
+            var count = countDownTime
             override fun run() {
-                count++
+                count--
 
                 // 一秒ごとに通知する
                 handler.post {

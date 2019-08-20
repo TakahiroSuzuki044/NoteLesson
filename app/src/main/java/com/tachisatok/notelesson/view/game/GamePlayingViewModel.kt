@@ -49,7 +49,7 @@ class GamePlayingViewModel(
         }
 
     @get:Bindable
-    var timeCountStr: String = "0"
+    var timeCountStr: String = COUNT_DOWN_TIME.toString()
         set(value) {
             field = value
             notifyPropertyChanged(BR.timeCountStr)
@@ -83,7 +83,7 @@ class GamePlayingViewModel(
             notifyPropertyChanged(BR.answerChoiceScale4)
         }
 
-    private val gameTimer = GameTimer(this)
+    private val gameTimer = GameTimer(this, COUNT_DOWN_TIME)
 
     init {
         // 出題
@@ -96,7 +96,7 @@ class GamePlayingViewModel(
     override fun onTime(second: Int) {
         timeCountStr = second.toString()
 
-        if (second >= 30) {
+        if (second <= 0) {
             gameTimer.cancel()
             gameEndCallback.onFinish(correctCount)
         }
@@ -147,5 +147,12 @@ class GamePlayingViewModel(
          * @param correctCount 正解回数
          */
         fun onFinish(correctCount: Int)
+    }
+
+    companion object {
+        /**
+         * 制限時間
+         */
+        private const val COUNT_DOWN_TIME = 30
     }
 }
