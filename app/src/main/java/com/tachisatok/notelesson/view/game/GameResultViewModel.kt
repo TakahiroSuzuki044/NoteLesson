@@ -1,20 +1,32 @@
 package com.tachisatok.notelesson.view.game
 
 class GameResultViewModel(
-    private val correctCount: Int
+    correctCount: Int,
+    private val callback: Callback
 ) {
 
-    val correctCountStr: String
-
-    init {
-        correctCountStr = correctCount.toString()
-    }
+    /**
+     * 正解数の文字列
+     */
+    val correctCountStr: String = correctCount.toString()
 
     fun onClickBack() {
-
+        callback.onClickBack()
     }
 
     fun onClickReplay() {
+        callback.onClickReplay()
+    }
 
+    interface Callback {
+        /**
+         * 戻るボタン（アプリレイアウトで生成しているボタン）のイベントコールバック
+         */
+        fun onClickBack()
+
+        /**
+         * リプレイボタンのイベントコールバック
+         */
+        fun onClickReplay()
     }
 }

@@ -10,7 +10,7 @@ import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.databinding.GameResultFragmentBinding
 import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
 
-class GameResultFragment : Fragment() {
+class GameResultFragment : Fragment(), GameResultViewModel.Callback {
 
     private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
 
@@ -23,9 +23,20 @@ class GameResultFragment : Fragment() {
     ): View? {
         val binding: GameResultFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.game_result_fragment, container, false)
-        binding.viewModel = GameResultViewModel(correctCount)
+        binding.viewModel = GameResultViewModel(correctCount, this)
 
         return binding.root
+    }
+
+    override fun onClickBack() {
+        activity?.finish()
+    }
+
+    override fun onClickReplay() {
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.game_activity_content, GamePlayingFragment.getInstance(itemData))
+            commit()
+        }
     }
 
     companion object {
