@@ -23,6 +23,7 @@ class GameResultFragment : Fragment() {
     ): View? {
         val binding: GameResultFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.game_result_fragment, container, false)
+        binding.viewModel = GameResultViewModel(correctCount)
 
         return binding.root
     }

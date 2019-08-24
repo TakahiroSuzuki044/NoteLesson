@@ -69,4 +69,10 @@
     <string name="correct_answer_number">正解数：</string>
     <string name="correct_answer_number_jp">せいかいすう：</string>
 
+    <!-- ゲーム結果画面 -->
+    <string name="go_back">戻る</string>
+    <string name="go_back_jp">もどる</string>
+    <string name="replay">もう一回！</string>
+    <string name="replay_jp">もういっかい！</string>
+
 </resources>
