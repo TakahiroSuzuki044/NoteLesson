@@ -39,6 +39,8 @@ enum class Characters(
      */
     GO_BACK(R.string.go_back, R.string.go_back_jp),
     REPLAY(R.string.replay, R.string.replay_jp),
+    TOTAL_QUESTION_NUMBER(R.string.total_question_number, R.string.total_question_number_jp),
+    CORRECT_TEXT_FOR_GAME_RESULT(R.string.correct_text_for_game_result, R.string.correct_text_for_game_result_jp),
 
     /** ド */
     C(R.string.c, R.string.c_jp),

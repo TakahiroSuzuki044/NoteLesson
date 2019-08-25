@@ -74,5 +74,9 @@
     <string name="go_back_jp">もどる</string>
     <string name="replay">もう一回！</string>
     <string name="replay_jp">もういっかい！</string>
+    <string name="total_question_number">問</string>
+    <string name="total_question_number_jp">もん</string>
+    <string name="correct_text_for_game_result">正解だよ！</string>
+    <string name="correct_text_for_game_result_jp">せいかいだよ！</string>
 
 </resources>

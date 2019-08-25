@@ -24,14 +24,48 @@
             android:layout_height="0dp"
             android:layout_weight="0.7">
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/game_result_fragment_correct_count_relative_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@{viewModel.correctCountStr}"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/game_result_fragment_correct_count_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.correctCountStr}"
+                    android:textColor="@color/white"
+                    android:textSize="100dp"
+                    tools:text="10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/game_result_fragment_correct_count_text_view"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@+id/game_result_fragment_correct_count_text_view"
+                    android:text="@{characters.TOTAL_QUESTION_NUMBER.getString(context)}"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="@string/total_question_number"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/game_result_fragment_correct_count_relative_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="16dp"
+                android:text="@{characters.CORRECT_TEXT_FOR_GAME_RESULT.getString(context)}"
                 android:textColor="@color/white"
-                android:textSize="100dp"
-                tools:text="10"/>
+                android:textSize="28sp"
+                android:textStyle="bold"
+                tools:text="@string/correct_text_for_game_result"/>
 
         </RelativeLayout>
 
@@ -52,9 +86,9 @@
                 tools:ignore="NestedWeights">
 
                 <FrameLayout
-                    android:layout_marginTop="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/shape_game_result_button"
                     android:clickable="true"
                     android:elevation="@dimen/button_elevation"
@@ -81,16 +115,16 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:orientation="vertical"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center_horizontal"
+                android:orientation="vertical"
                 tools:ignore="NestedWeights">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/shape_game_result_button"
                     android:clickable="true"
                     android:elevation="@dimen/button_elevation"
