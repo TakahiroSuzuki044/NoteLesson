@@ -10,8 +10,8 @@
             type="com.tachisatok.notelesson.view.game.GamePlayingViewModel"/>
 
         <variable
-            name="scale"
-            type="com.tachisatok.notelesson.constant.Scale"/>
+            name="noteName"
+            type="com.tachisatok.notelesson.constant.NoteName"/>
     </data>
 
     <FrameLayout
@@ -23,14 +23,14 @@
         android:focusable="true"
         android:onClick="@{(view) -> viewModel.onClickAnswer(view)}"
         android:stateListAnimator="@animator/rise_button_layout"
-        android:tag="@{scale}">
+        android:tag="@{noteName}">
 
         <TextView
             style="@style/large_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{scale.noteName.characters.getString(context)}"
+            android:text="@{noteName.characters.getString(context)}"
             tools:text="@string/c"/>
 
     </FrameLayout>

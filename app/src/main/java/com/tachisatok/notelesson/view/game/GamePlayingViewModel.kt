@@ -55,40 +55,11 @@ class GamePlayingViewModel(
             notifyPropertyChanged(BR.timeCountStr)
         }
 
-    @get:Bindable
-    var answerChoiceScale1: Scale? = null
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.answerChoiceScale1)
-        }
-
-    @get:Bindable
-    var answerChoiceScale2: Scale? = null
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.answerChoiceScale2)
-        }
-
-    @get:Bindable
-    var answerChoiceScale3: Scale? = null
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.answerChoiceScale3)
-        }
-
-    @get:Bindable
-    var answerChoiceScale4: Scale? = null
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.answerChoiceScale4)
-        }
-
     private val gameTimer = GameTimer(this, COUNT_DOWN_TIME)
 
     init {
         // 出題
         questionScale = gameScaleGenerator.getScale()
-        setChoice(questionScale)
         questionImageRes.set(questionScale.imageRes)
         gameTimer.start()
     }
@@ -106,9 +77,8 @@ class GamePlayingViewModel(
      * 回答
      */
     fun onClickAnswer(view: View) {
-        if (view.tag == questionScale) {
+        if (view.tag == questionScale.noteName) {
             questionScale = gameScaleGenerator.getScale()
-            setChoice(questionScale)
             questionImageRes.set(questionScale.imageRes)
             correctCount++
             correctCountStr = correctCount.toString()
@@ -118,27 +88,6 @@ class GamePlayingViewModel(
         }
     }
 
-    /**
-     * 選択肢を設定する
-     *
-     * @param questionScale 出題の正解
-     */
-    private fun setChoice(questionScale: Scale) {
-        val choiceData = gameScaleGenerator.getChoice(questionScale)
-        val choiceList =
-            mutableListOf(
-                questionScale,
-                choiceData.first,
-                choiceData.second,
-                choiceData.third
-            )
-                .shuffled()
-
-        answerChoiceScale1 = choiceList[0]
-        answerChoiceScale2 = choiceList[1]
-        answerChoiceScale3 = choiceList[2]
-        answerChoiceScale4 = choiceList[3]
-    }
 
     interface GameEndCallback {
         /**

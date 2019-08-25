@@ -10,6 +10,10 @@
             type="com.tachisatok.notelesson.constant.Characters"/>
 
         <variable
+            name="noteName"
+            type="com.tachisatok.notelesson.constant.NoteName"/>
+
+        <variable
             name="viewModel"
             type="com.tachisatok.notelesson.view.game.GamePlayingViewModel"/>
     </data>
@@ -106,101 +110,146 @@
 
             </FrameLayout>
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.55"
+                android:layout_weight="0.225"
                 android:clipChildren="false"
                 android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
                 android:paddingStart="16dp"
                 android:paddingTop="40dp"
                 android:paddingEnd="16dp"
+                android:paddingBottom="10dp">
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.D}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.F}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.A}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.225"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="16dp"
                 android:paddingBottom="40dp">
 
-                <TableRow
-                    android:layout_width="0dp"
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_c"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:clipChildren="false"
-                    android:clipToPadding="false">
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
 
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:paddingEnd="@dimen/center_answer_padding"
-                        android:paddingBottom="@dimen/center_answer_padding">
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.C}"
+                        app:viewModel="@{viewModel}"/>
 
-                        <include
-                            layout="@layout/game_playing_answer_layout"
-                            android:clipChildren="false"
-                            app:scale="@{viewModel.answerChoiceScale1}"
-                            app:viewModel="@{viewModel}"/>
+                </FrameLayout>
 
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:paddingStart="@dimen/center_answer_padding"
-                        android:paddingBottom="@dimen/center_answer_padding">
-
-                        <include
-                            layout="@layout/game_playing_answer_layout"
-                            app:scale="@{viewModel.answerChoiceScale2}"
-                            app:viewModel="@{viewModel}"/>
-
-                    </FrameLayout>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="0dp"
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_e"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:clipChildren="false"
-                    android:clipToPadding="false">
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
 
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:paddingTop="@dimen/center_answer_padding"
-                        android:paddingEnd="@dimen/center_answer_padding">
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.E}"
+                        app:viewModel="@{viewModel}"/>
 
-                        <include
-                            layout="@layout/game_playing_answer_layout"
-                            app:scale="@{viewModel.answerChoiceScale3}"
-                            app:viewModel="@{viewModel}"/>
+                </FrameLayout>
 
-                    </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_g"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
 
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:paddingStart="@dimen/center_answer_padding"
-                        android:paddingTop="@dimen/center_answer_padding">
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.G}"
+                        app:viewModel="@{viewModel}"/>
 
-                        <include
-                            layout="@layout/game_playing_answer_layout"
-                            app:scale="@{viewModel.answerChoiceScale4}"
-                            app:viewModel="@{viewModel}"/>
+                </FrameLayout>
 
-                    </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingRight="@dimen/center_answer_padding"
+                    android:paddingLeft="@dimen/center_answer_padding">
 
-                </TableRow>
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.B}"
+                        app:viewModel="@{viewModel}"/>
 
-            </TableLayout>
+                </FrameLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

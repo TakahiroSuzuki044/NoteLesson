@@ -4,15 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.databinding.GamePlayingFragmentBinding
 import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
+import kotlinx.android.synthetic.main.game_playing_fragment.*
 
 class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
 
     private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
+
+    private val TAG: String = GamePlayingFragment::class.java.simpleName
+
+    private lateinit var globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,14 +35,41 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
             itemData.fClefScaleRange
         )
 
+        globalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
+            val rootView = view
+            if (rootView != null) {
+                val width = rootView.width / 4
+                setAnswerWidth(game_playing_fragment_answer_layout_a, width)
+                setAnswerWidth(game_playing_fragment_answer_layout_b, width)
+                setAnswerWidth(game_playing_fragment_answer_layout_c, width)
+                setAnswerWidth(game_playing_fragment_answer_layout_d, width)
+                setAnswerWidth(game_playing_fragment_answer_layout_e, width)
+                setAnswerWidth(game_playing_fragment_answer_layout_f, width)
+                setAnswerWidth(game_playing_fragment_answer_layout_g, width)
+
+                binding.root.viewTreeObserver.removeOnGlobalLayoutListener(globalLayoutListener)
+            }
+        }
+
+        binding.root.viewTreeObserver.addOnGlobalLayoutListener(globalLayoutListener)
+
         return binding.root
     }
 
     override fun onFinish(correctCount: Int) {
         fragmentManager?.beginTransaction()?.apply {
-            replace(R.id.game_activity_content, GameResultFragment.getInstance(itemData, correctCount))
+            replace(
+                R.id.game_activity_content,
+                GameResultFragment.getInstance(itemData, correctCount)
+            )
             commit()
         }
+    }
+
+    private fun setAnswerWidth(frameLayout: FrameLayout, width: Int) {
+        val params = frameLayout.layoutParams
+        params.width = width
+        frameLayout.layoutParams = params
     }
 
     companion object {

@@ -1,6 +1,5 @@
 package com.tachisatok.notelesson.view.game
 
-import com.tachisatok.notelesson.constant.NoteName
 import com.tachisatok.notelesson.constant.Scale
 import com.tachisatok.notelesson.constant.ScaleRange
 
@@ -46,23 +45,6 @@ class GameScaleGenerator(
                 getCopyScale()
             }
         }
-    }
-
-    /**
-     * 出題する選択肢を返却する
-     *
-     * @param target 問題の正解
-     */
-    fun getChoice(target: Scale): ChoiceData {
-        val choiceNoteList = NoteName.values()
-            .filter { it != target.noteName }
-            .shuffled()
-
-        return ChoiceData(
-            Scale.of(target.clef, choiceNoteList[0]),
-            Scale.of(target.clef, choiceNoteList[1]),
-            Scale.of(target.clef, choiceNoteList[2])
-        )
     }
 
     /**
