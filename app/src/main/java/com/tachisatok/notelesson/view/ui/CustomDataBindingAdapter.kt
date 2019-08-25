@@ -32,3 +32,10 @@ fun startCorrectAnim(view: View, correctCount: Int) {
     view.startAnimation(anim)
     view.visibility = View.VISIBLE
 }
+
+@BindingAdapter("startAnim")
+fun startAnim(view: View, animRes: Int) {
+    val anim = AnimationUtils.loadAnimation(view.context, animRes)
+    view.startAnimation(anim)
+    view.visibility = View.VISIBLE
+}
