@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.databinding.GameResultFragmentBinding
-import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
 
 class GameResultFragment : Fragment(), GameResultViewModel.Callback {
 
-    private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
+    private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as ScaleRange) }
 
     private val correctCount by lazy { arguments?.getInt(ARGS_KEY_CORRECT_COUNT) as Int }
 
@@ -41,22 +41,22 @@ class GameResultFragment : Fragment(), GameResultViewModel.Callback {
 
     companion object {
         /**
-         * ARGS KEY：選択した[RangeSelectHorizontalItemData]
+         * ARGS KEY：選択した[ScaleRange]
          */
         private const val ARGS_KEY_ITEM_DATA = "args_key_item_data"
         /**
-         * ARGS KEY：選択した[RangeSelectHorizontalItemData]
+         * ARGS KEY：正解数
          */
         private const val ARGS_KEY_CORRECT_COUNT = "args_key_correct_count"
 
         @JvmStatic
         fun getInstance(
-            rangeSelectHorizontalItemData: RangeSelectHorizontalItemData,
+            scaleRange: ScaleRange,
             correctCount: Int
         ): GameResultFragment =
             GameResultFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(ARGS_KEY_ITEM_DATA, rangeSelectHorizontalItemData)
+                    putSerializable(ARGS_KEY_ITEM_DATA, scaleRange)
                     putInt(ARGS_KEY_CORRECT_COUNT, correctCount)
                 }
             }

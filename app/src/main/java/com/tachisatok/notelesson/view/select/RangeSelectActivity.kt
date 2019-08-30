@@ -33,7 +33,7 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
     }
 
     override fun onItemClick(view: View, item: Any, position: Int) {
-        if (item is RangeSelectHorizontalItemData) {
+        if (item is ScaleRange) {
             val intent = GameActivity.newIntent(this, item)
             startActivity(intent)
         }
