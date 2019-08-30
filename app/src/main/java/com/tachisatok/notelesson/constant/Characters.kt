@@ -27,6 +27,7 @@ enum class Characters(
      * 範囲選択画面
      */
     RECENT_GAME_RANGE(R.string.recent_game_range, R.string.recent_game_range_jp),
+    RECORD(R.string.record, R.string.record_jp),
 
     /**
      * ゲーム中画面

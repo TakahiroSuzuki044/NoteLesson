@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_horizontal_item.view.*
@@ -44,6 +45,7 @@ class RangeSelectHorizontalRecyclerAdapter(
         override fun onBind(item: ScaleRange, position: Int) {
             this.itemView.range_select_horizontal_item_image_view.setImageResource(item.imageRes)
             this.itemView.range_select_horizontal_item_range_text_view.text = item.characters.getString(context)
+            this.itemView.range_select_horizontal_item_record_text_view.text = Characters.RECORD.getString(context)
             this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
                 itemClickCallback.onItemClick(it, item, position)
             }

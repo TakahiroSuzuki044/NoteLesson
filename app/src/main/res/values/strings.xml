@@ -18,6 +18,9 @@
     <string name="recent_game_range">最近練習したもの</string>
     <string name="recent_game_range_jp">さいきん れんしゅう したもの</string>
 
+    <string name="record">記録：</string>
+    <string name="record_jp">きろく：</string>
+
     <!-- 記号 -->
     <string name="g_clef">ト音記号</string>
     <string name="g_clef_jp">とおんきごう</string>
