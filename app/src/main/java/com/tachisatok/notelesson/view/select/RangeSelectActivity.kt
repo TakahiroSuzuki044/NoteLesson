@@ -7,27 +7,25 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.Clef
 import com.tachisatok.notelesson.constant.GameLevel
+import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.base.BaseActivity
 import com.tachisatok.notelesson.view.game.GameActivity
-import com.tachisatok.notelesson.view.select.usecase.RangeSelectItemCreator
 import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_activity.*
 
 class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
 
-    private val gameLevel by lazy { intent.getSerializableExtra(INTENT_KEY_GAME_LEVEL) as GameLevel }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.range_select_activity)
 
-        val rangeSelectItemCreator = RangeSelectItemCreator(gameLevel)
         range_select_activity_recycler_view.adapter = RangeSelectRecyclerAdapter(
             this,
-            rangeSelectItemCreator.getGClefItem(),
-            rangeSelectItemCreator.getFClefItem(),
-            rangeSelectItemCreator.getGClefAndFClefItem(),
+            listOf(),
+            ScaleRange.of(Clef.G_CLEF),
+            ScaleRange.of(Clef.F_CLEF),
             this
         )
         range_select_activity_recycler_view.layoutManager =

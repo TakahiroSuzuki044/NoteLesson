@@ -67,6 +67,11 @@
 
     <style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
+    <style name="mini_text">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="default_text">
         <item name="android:textColor">@color/text_color</item>
         <item name="android:textSize">20sp</item>

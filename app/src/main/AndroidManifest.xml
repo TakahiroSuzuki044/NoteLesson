@@ -12,7 +12,7 @@
         android:theme="@style/AppThemeBlack"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".view.select.MainActivity"
+            android:name=".view.select.RangeSelectActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,10 +21,6 @@
         </activity>
         <activity
             android:name=".view.base.BaseActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".view.select.RangeSelectActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
