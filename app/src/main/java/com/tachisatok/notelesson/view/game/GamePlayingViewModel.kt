@@ -92,7 +92,6 @@ class GamePlayingViewModel(
         }
     }
 
-
     interface GameEndCallback {
         /**
          * ゲームの終了時に実行される
