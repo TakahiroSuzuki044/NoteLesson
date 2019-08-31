@@ -1,82 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:id="@+id/range_select_horizontal_item_root_layout"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="8dp"
-             android:layout_marginTop="8dp"
-             android:layout_marginRight="8dp"
-             android:layout_marginBottom="8dp"
-             android:background="@drawable/shape_level_select_layout"
-             android:clickable="true"
-             android:elevation="@dimen/button_elevation"
-             android:focusable="true"
-             android:gravity="center"
-             android:orientation="vertical"
-             android:stateListAnimator="@animator/rise_button_layout">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/range_select_horizontal_item_root_layout"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="8dp"
+              android:layout_marginTop="8dp"
+              android:layout_marginRight="8dp"
+              android:layout_marginBottom="8dp"
+              android:background="@drawable/shape_card"
+              android:clickable="true"
+              android:elevation="@dimen/button_elevation"
+              android:focusable="true"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingLeft="8dp"
+              android:paddingTop="20dp"
+              android:paddingRight="8dp"
+              android:paddingBottom="16dp"
+              android:stateListAnimator="@animator/rise_button_layout">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/range_select_horizontal_item_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp"
+        tools:src="@mipmap/g_clef_octave4_c_c"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- ト音記号 -->
-        <LinearLayout
-            android:id="@+id/range_select_horizontal_item_g_clef_linear_layout"
+        <TextView
+            android:id="@+id/range_select_horizontal_item_range_text_view"
+            style="@style/mini_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            tools:text="ド〜ファ"/>
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/g_clef"
-                tools:ignore="ContentDescription"/>
-
-            <TextView
-                android:id="@+id/range_select_horizontal_item_g_clef_text_view"
-                style="@style/default_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:textStyle="bold"
-                tools:text="ド〜ファ"/>
-        </LinearLayout>
-
-        <!-- ヘ音記号 -->
-        <LinearLayout
-            android:id="@+id/range_select_horizontal_item_f_clef_linear_layout"
+        <TextView
+            android:id="@+id/range_select_horizontal_item_record_text_view"
+            style="@style/mini_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@mipmap/f_clef"
-                tools:ignore="ContentDescription"/>
-
-            <TextView
-                android:id="@+id/range_select_horizontal_item_f_clef_text_view"
-                style="@style/default_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:textStyle="bold"
-                tools:text="ド〜ファ"/>
-        </LinearLayout>
+            android:layout_marginTop="8dp"
+            tools:text="記録：10"/>
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

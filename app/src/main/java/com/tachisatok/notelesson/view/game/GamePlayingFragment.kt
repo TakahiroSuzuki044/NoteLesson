@@ -9,13 +9,13 @@ import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.databinding.GamePlayingFragmentBinding
-import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
 import kotlinx.android.synthetic.main.game_playing_fragment.*
 
 class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
 
-    private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
+    private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as ScaleRange) }
 
     private val TAG: String = GamePlayingFragment::class.java.simpleName
 
@@ -31,8 +31,7 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
         binding.viewModel = GamePlayingViewModel(
             context!!,
             this,
-            itemData.gClefScaleRange,
-            itemData.fClefScaleRange
+            itemData
         )
 
         globalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
@@ -74,15 +73,15 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
 
     companion object {
         /**
-         * ARGS KEY：選択した[RangeSelectHorizontalItemData]
+         * ARGS KEY：選択した[ScaleRange]
          */
         private const val ARGS_KEY_ITEM_DATA = "args_key_item_data"
 
         @JvmStatic
-        fun getInstance(rangeSelectHorizontalItemData: RangeSelectHorizontalItemData): GamePlayingFragment =
+        fun getInstance(scaleRange: ScaleRange): GamePlayingFragment =
             GamePlayingFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(ARGS_KEY_ITEM_DATA, rangeSelectHorizontalItemData)
+                    putSerializable(ARGS_KEY_ITEM_DATA, scaleRange)
                 }
             }
     }

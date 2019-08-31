@@ -4,14 +4,8 @@ import com.tachisatok.notelesson.constant.Scale
 import com.tachisatok.notelesson.constant.ScaleRange
 
 class GameScaleGenerator(
-    gClefScaleRange: ScaleRange?,
-    fClefScaleRange: ScaleRange?
+    private val scaleRange: ScaleRange
 ) {
-    /**
-     * 返却する音階の範囲
-     */
-    private val scaleList = mutableListOf<Scale>()
-
     /**
      * 操作用の音階の範囲
      */
@@ -23,8 +17,6 @@ class GameScaleGenerator(
     private var beforeScale: Scale? = null
 
     init {
-        gClefScaleRange?.let { scaleList.addAll(it.scaleList) }
-        fClefScaleRange?.let { scaleList.addAll(it.scaleList) }
         copy()
     }
 
@@ -64,7 +56,7 @@ class GameScaleGenerator(
      * 操作用の音階にコピーする
      */
     private fun copy() {
-        copyScaleList = ArrayList(scaleList)
+        copyScaleList = ArrayList(scaleRange.scaleList)
         copyScaleList.shuffle()
     }
 

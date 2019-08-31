@@ -16,17 +16,10 @@ enum class Characters(
     @StringRes val japanese: Int
 ) {
     /**
-     * レベル選択画面
-     */
-    PLEASE_SELECT_LEVEL(R.string.please_select_level, R.string.please_select_level_jp),
-    LEVEL_1(R.string.level_1, R.string.level_1_jp),
-    LEVEL_2(R.string.level_2, R.string.level_2_jp),
-    LEVEL_3(R.string.level_3, R.string.level_3_jp),
-
-    /**
      * 範囲選択画面
      */
-    PLEASE_SELECT_RANGE(R.string.please_select_range, R.string.please_select_range_jp),
+    RECENT_GAME_RANGE(R.string.recent_game_range, R.string.recent_game_range_jp),
+    RECORD(R.string.record, R.string.record_jp),
 
     /**
      * ゲーム中画面
@@ -65,11 +58,7 @@ enum class Characters(
     /** ド〜ソ */
     C_TO_G(R.string.c_to_g, R.string.c_to_g_jp),
     /** ド〜ド */
-    C_TO_C(R.string.c_to_c, R.string.c_to_c_jp),
-    /** ラ〜ド */
-    A_TO_C(R.string.a_to_c, R.string.a_to_c_jp),
-    /** ファ〜ド */
-    F_TO_C(R.string.f_to_c, R.string.f_to_c_jp),
+    C_TO_C(R.string.c_to_c, R.string.c_to_c_jp)
     ;
 
     /**

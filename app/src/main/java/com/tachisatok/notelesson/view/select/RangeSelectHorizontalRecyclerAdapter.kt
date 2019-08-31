@@ -6,25 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
-import com.tachisatok.notelesson.constant.Clef
+import com.tachisatok.notelesson.constant.Characters
+import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_horizontal_item.view.*
 
 class RangeSelectHorizontalRecyclerAdapter(
         private val context: Context,
-        private val items: List<RangeSelectHorizontalItemData>,
+        private val items: List<ScaleRange>,
         private val itemClickCallback: OnItemClickCallback
 ) : RecyclerView.Adapter<RangeSelectHorizontalRecyclerAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return when (ItemType.of(viewType)) {
-            ItemType.SINGLE -> {
-                SingleViewHolder.getHolder(context, parent, itemClickCallback)
-            }
-            ItemType.DOUBLE -> {
-                DoubleViewHolder.getHolder(context, parent, itemClickCallback)
-            }
-        }
+        return SingleViewHolder.getHolder(context, parent, itemClickCallback)
     }
 
     override fun getItemCount(): Int {
@@ -33,14 +27,6 @@ class RangeSelectHorizontalRecyclerAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.onBind(items[position], position)
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (items[position].fClefScaleRange != null && items[position].gClefScaleRange != null) {
-            ItemType.DOUBLE.viewType
-        } else {
-            ItemType.SINGLE.viewType
-        }
     }
 
     private class SingleViewHolder private constructor(
@@ -56,45 +42,10 @@ class RangeSelectHorizontalRecyclerAdapter(
             }
         }
 
-        override fun onBind(item: RangeSelectHorizontalItemData, position: Int) {
-            val clef = if (item.gClefScaleRange != null) Clef.G_CLEF else Clef.F_CLEF
-            when (clef) {
-                Clef.G_CLEF -> {
-                    this.itemView.range_select_horizontal_item_f_clef_linear_layout.visibility = View.GONE
-                    this.itemView.range_select_horizontal_item_g_clef_linear_layout.visibility = View.VISIBLE
-                    this.itemView.range_select_horizontal_item_g_clef_text_view.text = item.gClefScaleRange?.characters?.getString(context)
-                    this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
-                        itemClickCallback.onItemClick(it, item, position)
-                    }
-                }
-                Clef.F_CLEF -> {
-                    this.itemView.range_select_horizontal_item_g_clef_linear_layout.visibility = View.GONE
-                    this.itemView.range_select_horizontal_item_f_clef_linear_layout.visibility = View.VISIBLE
-                    this.itemView.range_select_horizontal_item_f_clef_text_view.text = item.fClefScaleRange?.characters?.getString(context)
-                    this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
-                        itemClickCallback.onItemClick(it, item, position)
-                    }
-                }
-            }
-        }
-    }
-
-    private class DoubleViewHolder private constructor(
-            view: View,
-            private val context: Context,
-            private val itemClickCallback: OnItemClickCallback) : ItemViewHolder(view) {
-
-        companion object {
-            @JvmStatic
-            fun getHolder(context: Context, parent: ViewGroup, itemClickCallback: OnItemClickCallback): DoubleViewHolder {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.range_select_horizontal_item, parent, false)
-                return DoubleViewHolder(view, context, itemClickCallback)
-            }
-        }
-
-        override fun onBind(item: RangeSelectHorizontalItemData, position: Int) {
-            this.itemView.range_select_horizontal_item_g_clef_text_view.text = item.gClefScaleRange?.characters?.getString(context)
-            this.itemView.range_select_horizontal_item_f_clef_text_view.text = item.fClefScaleRange?.characters?.getString(context)
+        override fun onBind(item: ScaleRange, position: Int) {
+            this.itemView.range_select_horizontal_item_image_view.setImageResource(item.imageRes)
+            this.itemView.range_select_horizontal_item_range_text_view.text = item.characters.getString(context)
+            this.itemView.range_select_horizontal_item_record_text_view.text = Characters.RECORD.getString(context)
             this.itemView.range_select_horizontal_item_root_layout.setOnClickListener {
                 itemClickCallback.onItemClick(it, item, position)
             }
@@ -110,18 +61,6 @@ class RangeSelectHorizontalRecyclerAdapter(
          *
          * @param item 表示するアイテム
          */
-        abstract fun onBind(item: RangeSelectHorizontalItemData, position: Int)
-    }
-
-    private enum class ItemType(val viewType: Int) {
-        SINGLE(0),
-        DOUBLE(1);
-
-        companion object {
-            @JvmStatic
-            fun of(viewType: Int): ItemType {
-                return values().first { it.viewType == viewType }
-            }
-        }
+        abstract fun onBind(item: ScaleRange, position: Int)
     }
 }

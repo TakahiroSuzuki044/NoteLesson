@@ -8,28 +8,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.constant.Characters
+import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import kotlinx.android.synthetic.main.range_select_item_horizontal_recycler_view.view.*
 import kotlinx.android.synthetic.main.range_select_item_section.view.*
-import kotlinx.android.synthetic.main.range_select_item_title.view.*
 
 class RangeSelectRecyclerAdapter(
-        private val context: Context,
-        private val gClefList: List<RangeSelectHorizontalItemData>,
-        private val fClefList: List<RangeSelectHorizontalItemData>,
-        private val gClefAndFClefList: List<RangeSelectHorizontalItemData>,
-        private val itemClickCallback: OnItemClickCallback
+    private val context: Context,
+    recentGameList: List<ScaleRange>,
+    gClefOctave4List: List<ScaleRange>,
+    gClefOctave5List: List<ScaleRange>,
+    fClefOctave2List: List<ScaleRange>,
+    fClefOctave3List: List<ScaleRange>,
+    private val itemClickCallback: OnItemClickCallback
 ) : RecyclerView.Adapter<RangeSelectRecyclerAdapter.ItemViewHolder>() {
+
+    private val itemHolder: ItemHolder
 
     private val itemAlgorithm: ItemAlgorithm
 
     init {
-        itemAlgorithm = ItemAlgorithm(context, gClefList, fClefList, gClefAndFClefList)
+        itemHolder = ItemHolder(context, recentGameList, gClefOctave4List, gClefOctave5List, fClefOctave2List, fClefOctave3List)
+        itemAlgorithm = ItemAlgorithm(recentGameList.isNotEmpty())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return when (ViewHolderType.of(viewType)) {
-            ViewHolderType.TITLE -> TitleViewHolder.getHolder(parent)
             ViewHolderType.SECTION -> SectionViewHolder.getHolder(parent)
             ViewHolderType.RANGE_ITEMS -> HorizontalRecyclerViewHolder.getHolder(parent, context, itemClickCallback)
         }
@@ -40,11 +44,11 @@ class RangeSelectRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.onBind(itemAlgorithm.get(position), position)
+        holder.onBind(itemHolder.get(itemAlgorithm.of(position)), position)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return ItemDataType.of(position).viewHolderType.viewType
+        return itemAlgorithm.of(position).viewHolderType.viewType
     }
 
     abstract class ItemViewHolder(
@@ -58,26 +62,6 @@ class RangeSelectRecyclerAdapter(
          * @param position リストポジション
          */
         abstract fun onBind(itemData: ItemData, position: Int)
-    }
-
-    /**
-     * タイトル
-     */
-    private class TitleViewHolder private constructor(
-            view: View
-    ) : ItemViewHolder(view) {
-
-        companion object {
-            @JvmStatic
-            fun getHolder(parent: ViewGroup): TitleViewHolder {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.range_select_item_title, parent, false)
-                return TitleViewHolder(view)
-            }
-        }
-
-        override fun onBind(itemData: ItemData, position: Int) {
-            this.itemView.range_select_item_title_text_view.text = itemData.text
-        }
     }
 
     /**
@@ -125,16 +109,19 @@ class RangeSelectRecyclerAdapter(
         }
     }
 
-    private class ItemAlgorithm(
-            context: Context,
-            private val gClefList: List<RangeSelectHorizontalItemData>,
-            private val fClefList: List<RangeSelectHorizontalItemData>,
-            private val gClefAndFClefList: List<RangeSelectHorizontalItemData>
+    private class ItemHolder(
+        context: Context,
+        private val recentGameList: List<ScaleRange>,
+        private val gClefOctave4List: List<ScaleRange>,
+        private val gClefOctave5List: List<ScaleRange>,
+        private val fClefOctave2List: List<ScaleRange>,
+        private val fClefOctave3List: List<ScaleRange>
     ) {
-        private val titleText = Characters.PLEASE_SELECT_RANGE.getString(context)
-        private val sectionGClefText = Characters.G_CLEF.getString(context)
-        private val sectionFClefText = Characters.F_CLEF.getString(context)
-        private val sectionGClefAndFClefText = "${sectionGClefText}と$sectionFClefText"
+        private val sectionRecentText = Characters.RECENT_GAME_RANGE.getString(context)
+        private val sectionGClefOctave4Text = Characters.G_CLEF.getString(context) + context.getString(R.string.number_1)
+        private val sectionGClefOctave5Text = Characters.G_CLEF.getString(context) + context.getString(R.string.number_2)
+        private val sectionFClefOctave3Text = Characters.F_CLEF.getString(context) + context.getString(R.string.number_1)
+        private val sectionFClefOctave2Text = Characters.F_CLEF.getString(context) + context.getString(R.string.number_2)
 
         /**
          * リストに表示する[ItemData]を返却する
@@ -142,20 +129,23 @@ class RangeSelectRecyclerAdapter(
          * @param position リストポジション
          * @return リストに表示する[ItemData]
          */
-        fun get(position: Int): ItemData {
-            return when (ItemDataType.of(position)) {
-                ItemDataType.TITLE -> ItemData(text = titleText)
-                ItemDataType.SECTION_G_CLEF -> ItemData(text = sectionGClefText)
-                ItemDataType.RANGE_ITEMS_G_CLEF -> ItemData(clefList = gClefList)
-                ItemDataType.SECTION_F_CLEF -> ItemData(text = sectionFClefText)
-                ItemDataType.RANGE_ITEMS_F_CLEF -> ItemData(clefList = fClefList)
-                ItemDataType.SECTION_G_CLEF_AND_F_CLEF -> ItemData(text = sectionGClefAndFClefText)
-                ItemDataType.RANGE_ITEMS_G_CLEF_AND_F_CLEF -> ItemData(clefList = gClefAndFClefList)
-            }
-        }
+        fun get(item: Item): ItemData {
+            return when (item) {
+                Item.SECTION_RECENT -> ItemData(text = sectionRecentText)
+                Item.RANGE_ITEMS_RECENT -> ItemData(clefList = recentGameList)
 
-        fun getItemCount(): Int {
-            return ItemDataType.values().size
+                Item.SECTION_G_CLEF_OCTAVE4 -> ItemData(text = sectionGClefOctave4Text)
+                Item.RANGE_ITEMS_G_CLEF_OCTAVE4 -> ItemData(clefList = gClefOctave4List)
+
+                Item.SECTION_G_CLEF_OCTAVE5 -> ItemData(text = sectionGClefOctave5Text)
+                Item.RANGE_ITEMS_G_CLEF_OCTAVE5 -> ItemData(clefList = gClefOctave5List)
+
+                Item.SECTION_F_CLEF_OCTAVE3 -> ItemData(text = sectionFClefOctave3Text)
+                Item.RANGE_ITEMS_F_CLEF_OCTAVE3 -> ItemData(clefList = fClefOctave3List)
+
+                Item.SECTION_F_CLEF_OCTAVE2 -> ItemData(text = sectionFClefOctave2Text)
+                Item.RANGE_ITEMS_F_CLEF_OCTAVE2 -> ItemData(clefList = fClefOctave2List)
+            }
         }
     }
 
@@ -166,38 +156,53 @@ class RangeSelectRecyclerAdapter(
      */
     data class ItemData(
             val text: String? = null,
-            val clefList: List<RangeSelectHorizontalItemData>? = null
+            val clefList: List<ScaleRange>? = null
     )
 
-    /**
-     * 各リストの定義
-     *
-     * @property position リストポジション
-     */
-    private enum class ItemDataType(val position: Int, val viewHolderType: ViewHolderType) {
-        TITLE(0, ViewHolderType.TITLE),
-        SECTION_G_CLEF(1, ViewHolderType.SECTION),
-        RANGE_ITEMS_G_CLEF(2, ViewHolderType.RANGE_ITEMS),
-        SECTION_F_CLEF(3, ViewHolderType.SECTION),
-        RANGE_ITEMS_F_CLEF(4, ViewHolderType.RANGE_ITEMS),
-        SECTION_G_CLEF_AND_F_CLEF(5, ViewHolderType.SECTION),
-        RANGE_ITEMS_G_CLEF_AND_F_CLEF(6, ViewHolderType.RANGE_ITEMS);
+    private class ItemAlgorithm(
+        private val existRecentList: Boolean
+    ) {
+        fun of(position: Int): Item {
+            val sortOrder = if (existRecentList) position else position + RECENT_AREA_COMPENSATE
+            return Item.values().first { it.sortOrder == sortOrder }
+        }
+
+        fun getItemCount(): Int {
+            return if (existRecentList) Item.values().size else Item.values().size - RECENT_AREA_COMPENSATE
+        }
 
         companion object {
-            @JvmStatic
-            fun of(position: Int): ItemDataType {
-                return values().first { it.position == position }
-            }
+            /**
+             * 最近練習した領域がないときの埋め合わせ分
+             */
+            private const val RECENT_AREA_COMPENSATE = 2
+
         }
+    }
+
+    private enum class Item(val sortOrder: Int, val viewHolderType: ViewHolderType) {
+        SECTION_RECENT(0, ViewHolderType.SECTION),
+        RANGE_ITEMS_RECENT(1, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_G_CLEF_OCTAVE4(2, ViewHolderType.SECTION),
+        RANGE_ITEMS_G_CLEF_OCTAVE4(3, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_G_CLEF_OCTAVE5(4, ViewHolderType.SECTION),
+        RANGE_ITEMS_G_CLEF_OCTAVE5(5, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_F_CLEF_OCTAVE3(6, ViewHolderType.SECTION),
+        RANGE_ITEMS_F_CLEF_OCTAVE3(7, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_F_CLEF_OCTAVE2(8, ViewHolderType.SECTION),
+        RANGE_ITEMS_F_CLEF_OCTAVE2(9, ViewHolderType.RANGE_ITEMS)
     }
 
     /**
      * ViewHolderのタイプを表す
      */
     private enum class ViewHolderType(val viewType: Int) {
-        TITLE(0),
-        SECTION(1),
-        RANGE_ITEMS(2);
+        SECTION(0),
+        RANGE_ITEMS(1);
 
         companion object {
             @JvmStatic

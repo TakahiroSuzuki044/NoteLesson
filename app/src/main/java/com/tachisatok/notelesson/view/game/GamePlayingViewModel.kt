@@ -12,11 +12,10 @@ import com.tachisatok.notelesson.constant.ScaleRange
 class GamePlayingViewModel(
     val context: Context,
     private val gameEndCallback: GameEndCallback,
-    gClefScaleRange: ScaleRange?,
-    fClefScaleRange: ScaleRange?
+    scaleRange: ScaleRange
 ) : BaseObservable(), GameTimer.Callback {
 
-    private val gameScaleGenerator = GameScaleGenerator(gClefScaleRange, fClefScaleRange)
+    private val gameScaleGenerator = GameScaleGenerator(scaleRange)
 
     /**
      * 出題の画像

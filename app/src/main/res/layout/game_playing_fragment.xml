@@ -48,7 +48,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/shape_level_select_layout"
+                    android:background="@drawable/shape_game_playing_question_area_layout"
                     android:padding="16dp"
                     app:startFailAnim="@{viewModel.failCount}">
 
@@ -106,7 +106,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/shape_game_playing_correct"
                     android:visibility="gone"
-                    app:startCorrectAnim="@{viewModel.correctCount}"/>
+                    app:startCorrectAnim="@{viewModel.correctCountStr}"/>
 
             </FrameLayout>
 

@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.base.BaseActivity
-import com.tachisatok.notelesson.view.select.RangeSelectHorizontalItemData
 
 class GameActivity : BaseActivity() {
 
-    private val itemData by lazy { (intent.getSerializableExtra(INTENT_KEY_ITEM_DATA) as RangeSelectHorizontalItemData) }
+    private val itemData by lazy { (intent.getSerializableExtra(INTENT_KEY_ITEM_DATA) as ScaleRange) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class GameActivity : BaseActivity() {
 
     companion object {
         /**
-         * INTENT KEY：選択した[RangeSelectHorizontalItemData]
+         * INTENT KEY：選択した[ScaleRange]
          */
         private const val INTENT_KEY_ITEM_DATA = "intent_key_item_data"
 
@@ -34,10 +34,10 @@ class GameActivity : BaseActivity() {
         @JvmStatic
         fun newIntent(
             context: Context,
-            rangeSelectHorizontalItemData: RangeSelectHorizontalItemData
+            scaleRange: ScaleRange
         ): Intent {
             return Intent(context, GameActivity::class.java)
-                .putExtra(INTENT_KEY_ITEM_DATA, rangeSelectHorizontalItemData)
+                .putExtra(INTENT_KEY_ITEM_DATA, scaleRange)
         }
     }
 }
