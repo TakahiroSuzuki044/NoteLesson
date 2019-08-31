@@ -1,8 +1,11 @@
 package com.tachisatok.notelesson.view.ui
 
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
@@ -38,6 +41,68 @@ fun startCorrectAnim(view: View, correctCountStr: String) {
 @BindingAdapter("startAnim")
 fun startAnim(view: View, animRes: Int) {
     val anim = AnimationUtils.loadAnimation(view.context, animRes)
+    view.startAnimation(anim)
+    view.visibility = View.VISIBLE
+}
+
+@BindingAdapter("timerTextWithAnim")
+fun timerTextWithAnim(view: TextView, text: String) {
+    val anim = AnimationUtils.loadAnimation(view.context, R.anim.timer_text_count_anim)
+    view.text = text
+    val count = text.toIntOrNull()
+    count?.let {
+        if (count in 0..9) {
+            view.setTextColor(ContextCompat.getColor(view.context, R.color.red))
+        }
+    }
+    view.startAnimation(anim)
+    view.visibility = View.VISIBLE
+}
+
+@BindingAdapter("timerText")
+fun timerText(view: TextView, text: String) {
+    view.text = text
+    val count = text.toIntOrNull()
+    count?.let {
+        if (count in 0..10) {
+            view.setTextColor(ContextCompat.getColor(view.context, R.color.red))
+        }
+    }
+    view.visibility = View.VISIBLE
+}
+
+@BindingAdapter("timerSrc")
+fun timerSrc(view: ImageView, countStr: String) {
+    val count = countStr.toIntOrNull()
+
+    if (count != null && count in 0..10) {
+        val fromAnim = AnimationUtils.loadAnimation(view.context, R.anim.timer_image_from_anim)
+        fromAnim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationRepeat(animation: Animation?) {
+                // ignore
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                val toAnim = AnimationUtils.loadAnimation(view.context, R.anim.timer_image_to_anim)
+                view.startAnimation(toAnim)
+            }
+
+            override fun onAnimationStart(animation: Animation?) {
+                // ignore
+            }
+        })
+        view.startAnimation(fromAnim)
+        view.setImageResource(R.mipmap.red_timer)
+    } else {
+        view.setImageResource(R.mipmap.timer)
+    }
+    view.visibility = View.VISIBLE
+}
+
+@BindingAdapter("correctTextWithAnim")
+fun correctTextWithAnim(view: TextView, text: String) {
+    val anim = AnimationUtils.loadAnimation(view.context, R.anim.correct_text_count_anim)
+    view.text = text
     view.startAnimation(anim)
     view.visibility = View.VISIBLE
 }

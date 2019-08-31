@@ -10,6 +10,6 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // todo 任意のテーマに変更できるように修正
-        setTheme(R.style.AppThemeGreen)
+        setTheme(R.style.AppThemeRed)
     }
 }

@@ -22,12 +22,6 @@ enum class Characters(
     RECORD(R.string.record, R.string.record_jp),
 
     /**
-     * ゲーム中画面
-     */
-    REMAINING_TIME_LABEL(R.string.remaining_time_label, R.string.remaining_time_label_jp),
-    CORRECT_ANSWER_NUMBER(R.string.correct_answer_number, R.string.correct_answer_number_jp),
-
-    /**
      * ゲーム結果画面
      */
     GO_BACK(R.string.go_back, R.string.go_back_jp),

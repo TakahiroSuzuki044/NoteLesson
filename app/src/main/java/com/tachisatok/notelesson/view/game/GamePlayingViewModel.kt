@@ -50,7 +50,12 @@ class GamePlayingViewModel(
     @get:Bindable
     var timeCountStr: String = COUNT_DOWN_TIME.toString()
         set(value) {
-            field = value
+            field = if (value.toInt() in 0..9) {
+                // ゼロ埋めする
+                "0$value"
+            } else {
+                value
+            }
             notifyPropertyChanged(BR.timeCountStr)
         }
 

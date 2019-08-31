@@ -50,12 +50,6 @@
     <string name="c_to_c">ド〜ド</string>
     <string name="c_to_c_jp">ど〜ど</string>
 
-    <!-- ゲーム中画面 -->
-    <string name="remaining_time_label">残り時間：</string>
-    <string name="remaining_time_label_jp">のこりじかん：</string>
-    <string name="correct_answer_number">正解数：</string>
-    <string name="correct_answer_number_jp">せいかいすう：</string>
-
     <!-- ゲーム結果画面 -->
     <string name="go_back">戻る</string>
     <string name="go_back_jp">もどる</string>
