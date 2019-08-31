@@ -26,8 +26,10 @@ fun startFailAnim(view: View, failCount: Int) {
 }
 
 @BindingAdapter("startCorrectAnim")
-fun startCorrectAnim(view: View, correctCount: Int) {
+fun startCorrectAnim(view: View, correctCountStr: String) {
+    val correctCount = correctCountStr.toIntOrNull() ?: return
     if (correctCount == 0) return
+
     val anim = AnimationUtils.loadAnimation(view.context, R.anim.correct_anim)
     view.startAnimation(anim)
     view.visibility = View.VISIBLE
