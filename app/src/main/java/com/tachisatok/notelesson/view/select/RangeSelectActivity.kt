@@ -1,14 +1,11 @@
 package com.tachisatok.notelesson.view.select
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.constant.Clef
-import com.tachisatok.notelesson.constant.GameLevel
 import com.tachisatok.notelesson.constant.Octave
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.base.BaseActivity
@@ -39,22 +36,6 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
         if (item is ScaleRange) {
             val intent = GameActivity.newIntent(this, item)
             startActivity(intent)
-        }
-    }
-
-    companion object {
-        /**
-         * INTENT KEY：選択した[GameLevel]
-         */
-        private const val INTENT_KEY_GAME_LEVEL = "intent_key_game_level"
-
-        /**
-         * [RangeSelectActivity]を起動するIntentを返却する
-         */
-        @JvmStatic
-        fun newIntent(context: Context, gameLevel: GameLevel): Intent {
-            return Intent(context, RangeSelectActivity::class.java)
-                .putExtra(INTENT_KEY_GAME_LEVEL, gameLevel)
         }
     }
 }
