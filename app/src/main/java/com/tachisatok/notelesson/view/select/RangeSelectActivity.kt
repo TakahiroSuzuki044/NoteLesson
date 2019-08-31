@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.constant.Clef
 import com.tachisatok.notelesson.constant.GameLevel
+import com.tachisatok.notelesson.constant.Octave
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.base.BaseActivity
 import com.tachisatok.notelesson.view.game.GameActivity
@@ -24,8 +25,10 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
         range_select_activity_recycler_view.adapter = RangeSelectRecyclerAdapter(
             this,
             listOf(),
-            ScaleRange.of(Clef.G_CLEF),
-            ScaleRange.of(Clef.F_CLEF),
+            ScaleRange.of(Clef.G_CLEF, Octave.FOUR),
+            ScaleRange.of(Clef.G_CLEF, Octave.FIVE),
+            ScaleRange.of(Clef.F_CLEF, Octave.TWO),
+            ScaleRange.of(Clef.F_CLEF, Octave.THREE),
             this
         )
         range_select_activity_recycler_view.layoutManager =

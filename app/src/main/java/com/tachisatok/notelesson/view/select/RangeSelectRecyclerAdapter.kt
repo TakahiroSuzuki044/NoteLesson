@@ -14,11 +14,13 @@ import kotlinx.android.synthetic.main.range_select_item_horizontal_recycler_view
 import kotlinx.android.synthetic.main.range_select_item_section.view.*
 
 class RangeSelectRecyclerAdapter(
-        private val context: Context,
-        recentGameList: List<ScaleRange>,
-        gClefList: List<ScaleRange>,
-        fClefList: List<ScaleRange>,
-        private val itemClickCallback: OnItemClickCallback
+    private val context: Context,
+    recentGameList: List<ScaleRange>,
+    gClefOctave4List: List<ScaleRange>,
+    gClefOctave5List: List<ScaleRange>,
+    fClefOctave2List: List<ScaleRange>,
+    fClefOctave3List: List<ScaleRange>,
+    private val itemClickCallback: OnItemClickCallback
 ) : RecyclerView.Adapter<RangeSelectRecyclerAdapter.ItemViewHolder>() {
 
     private val itemHolder: ItemHolder
@@ -26,7 +28,7 @@ class RangeSelectRecyclerAdapter(
     private val itemAlgorithm: ItemAlgorithm
 
     init {
-        itemHolder = ItemHolder(context, recentGameList, gClefList, fClefList)
+        itemHolder = ItemHolder(context, recentGameList, gClefOctave4List, gClefOctave5List, fClefOctave2List, fClefOctave3List)
         itemAlgorithm = ItemAlgorithm(recentGameList.isNotEmpty())
     }
 
@@ -110,12 +112,16 @@ class RangeSelectRecyclerAdapter(
     private class ItemHolder(
         context: Context,
         private val recentGameList: List<ScaleRange>,
-        private val gClefList: List<ScaleRange>,
-        private val fClefList: List<ScaleRange>
+        private val gClefOctave4List: List<ScaleRange>,
+        private val gClefOctave5List: List<ScaleRange>,
+        private val fClefOctave2List: List<ScaleRange>,
+        private val fClefOctave3List: List<ScaleRange>
     ) {
         private val sectionRecentText = Characters.RECENT_GAME_RANGE.getString(context)
-        private val sectionGClefText = Characters.G_CLEF.getString(context)
-        private val sectionFClefText = Characters.F_CLEF.getString(context)
+        private val sectionGClefOctave4Text = Characters.G_CLEF.getString(context) + context.getString(R.string.number_1)
+        private val sectionGClefOctave5Text = Characters.G_CLEF.getString(context) + context.getString(R.string.number_2)
+        private val sectionFClefOctave3Text = Characters.F_CLEF.getString(context) + context.getString(R.string.number_1)
+        private val sectionFClefOctave2Text = Characters.F_CLEF.getString(context) + context.getString(R.string.number_2)
 
         /**
          * リストに表示する[ItemData]を返却する
@@ -127,10 +133,18 @@ class RangeSelectRecyclerAdapter(
             return when (item) {
                 Item.SECTION_RECENT -> ItemData(text = sectionRecentText)
                 Item.RANGE_ITEMS_RECENT -> ItemData(clefList = recentGameList)
-                Item.SECTION_G_CLEF -> ItemData(text = sectionGClefText)
-                Item.RANGE_ITEMS_G_CLEF -> ItemData(clefList = gClefList)
-                Item.SECTION_F_CLEF -> ItemData(text = sectionFClefText)
-                Item.RANGE_ITEMS_F_CLEF -> ItemData(clefList = fClefList)
+
+                Item.SECTION_G_CLEF_OCTAVE4 -> ItemData(text = sectionGClefOctave4Text)
+                Item.RANGE_ITEMS_G_CLEF_OCTAVE4 -> ItemData(clefList = gClefOctave4List)
+
+                Item.SECTION_G_CLEF_OCTAVE5 -> ItemData(text = sectionGClefOctave5Text)
+                Item.RANGE_ITEMS_G_CLEF_OCTAVE5 -> ItemData(clefList = gClefOctave5List)
+
+                Item.SECTION_F_CLEF_OCTAVE3 -> ItemData(text = sectionFClefOctave3Text)
+                Item.RANGE_ITEMS_F_CLEF_OCTAVE3 -> ItemData(clefList = fClefOctave3List)
+
+                Item.SECTION_F_CLEF_OCTAVE2 -> ItemData(text = sectionFClefOctave2Text)
+                Item.RANGE_ITEMS_F_CLEF_OCTAVE2 -> ItemData(clefList = fClefOctave2List)
             }
         }
     }
@@ -169,10 +183,18 @@ class RangeSelectRecyclerAdapter(
     private enum class Item(val sortOrder: Int, val viewHolderType: ViewHolderType) {
         SECTION_RECENT(0, ViewHolderType.SECTION),
         RANGE_ITEMS_RECENT(1, ViewHolderType.RANGE_ITEMS),
-        SECTION_G_CLEF(2, ViewHolderType.SECTION),
-        RANGE_ITEMS_G_CLEF(3, ViewHolderType.RANGE_ITEMS),
-        SECTION_F_CLEF(4, ViewHolderType.SECTION),
-        RANGE_ITEMS_F_CLEF(5, ViewHolderType.RANGE_ITEMS)
+
+        SECTION_G_CLEF_OCTAVE4(2, ViewHolderType.SECTION),
+        RANGE_ITEMS_G_CLEF_OCTAVE4(3, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_G_CLEF_OCTAVE5(4, ViewHolderType.SECTION),
+        RANGE_ITEMS_G_CLEF_OCTAVE5(5, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_F_CLEF_OCTAVE3(6, ViewHolderType.SECTION),
+        RANGE_ITEMS_F_CLEF_OCTAVE3(7, ViewHolderType.RANGE_ITEMS),
+
+        SECTION_F_CLEF_OCTAVE2(8, ViewHolderType.SECTION),
+        RANGE_ITEMS_F_CLEF_OCTAVE2(9, ViewHolderType.RANGE_ITEMS)
     }
 
     /**

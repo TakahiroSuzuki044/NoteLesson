@@ -10,6 +10,7 @@ import com.tachisatok.notelesson.R
  */
 enum class ScaleRange(
     val clef: Clef,
+    val octave: Octave,
     val imageRes: Int,
     val characters: Characters,
     val scaleList: List<Scale>
@@ -17,6 +18,7 @@ enum class ScaleRange(
     // G_CLEF
     G_CLEF_OCTAVE4_C_TO_OCTAVE4_E(
         Clef.G_CLEF,
+        Octave.FOUR,
         R.mipmap.g_clef_octave4_c_e,
         Characters.C_TO_E,
         listOf(
@@ -27,6 +29,7 @@ enum class ScaleRange(
     ),
     G_CLEF_OCTAVE4_C_TO_OCTAVE4_G(
         Clef.G_CLEF,
+        Octave.FOUR,
         R.mipmap.g_clef_octave4_c_g,
         Characters.C_TO_G,
         listOf(
@@ -39,6 +42,7 @@ enum class ScaleRange(
     ),
     G_CLEF_OCTAVE4_C_TO_OCTAVE5_C(
         Clef.G_CLEF,
+        Octave.FOUR,
         R.mipmap.g_clef_octave4_c_c,
         Characters.C_TO_C,
         listOf(
@@ -54,6 +58,7 @@ enum class ScaleRange(
     ),
     G_CLEF_OCTAVE5_C_TO_OCTAVE5_E(
         Clef.G_CLEF,
+        Octave.FIVE,
         R.mipmap.g_clef_octave5_c_e,
         Characters.C_TO_E,
         listOf(
@@ -64,6 +69,7 @@ enum class ScaleRange(
     ),
     G_CLEF_OCTAVE5_C_TO_OCTAVE5_G(
         Clef.G_CLEF,
+        Octave.FIVE,
         R.mipmap.g_clef_octave5_c_g,
         Characters.C_TO_G,
         listOf(
@@ -76,6 +82,7 @@ enum class ScaleRange(
     ),
     G_CLEF_OCTAVE5_C_TO_OCTAVE6_C(
         Clef.G_CLEF,
+        Octave.FIVE,
         R.mipmap.g_clef_octave5_c_c,
         Characters.C_TO_C,
         listOf(
@@ -93,6 +100,7 @@ enum class ScaleRange(
     // F_CLEF
     F_CLEF_OCTAVE2_C_TO_OCTAVE2_E(
         Clef.F_CLEF,
+        Octave.TWO,
         R.mipmap.f_clef_octave2_c_e,
         Characters.C_TO_E,
         listOf(
@@ -103,6 +111,7 @@ enum class ScaleRange(
     ),
     F_CLEF_OCTAVE2_C_TO_OCTAVE2_G(
         Clef.F_CLEF,
+        Octave.TWO,
         R.mipmap.f_clef_octave2_c_g,
         Characters.C_TO_G,
         listOf(
@@ -115,6 +124,7 @@ enum class ScaleRange(
     ),
     F_CLEF_OCTAVE2_C_TO_OCTAVE3_C(
         Clef.F_CLEF,
+        Octave.TWO,
         R.mipmap.f_clef_octave2_c_c,
         Characters.C_TO_C,
         listOf(
@@ -131,6 +141,7 @@ enum class ScaleRange(
 
     F_CLEF_OCTAVE3_C_TO_OCTAVE3_E(
         Clef.F_CLEF,
+        Octave.THREE,
         R.mipmap.f_clef_octave3_c_e,
         Characters.C_TO_E,
         listOf(
@@ -141,6 +152,7 @@ enum class ScaleRange(
     ),
     F_CLEF_OCTAVE3_C_TO_OCTAVE3_G(
         Clef.F_CLEF,
+        Octave.THREE,
         R.mipmap.f_clef_octave3_c_g,
         Characters.C_TO_G,
         listOf(
@@ -153,6 +165,7 @@ enum class ScaleRange(
     ),
     F_CLEF_OCTAVE3_C_TO_OCTAVE4_C(
         Clef.F_CLEF,
+        Octave.THREE,
         R.mipmap.f_clef_octave3_c_c,
         Characters.C_TO_C,
         listOf(
@@ -169,8 +182,8 @@ enum class ScaleRange(
 
     companion object {
         @JvmStatic
-        fun of(clef: Clef): List<ScaleRange> {
-            return values().filter { it.clef == clef }
+        fun of(clef: Clef, octave: Octave): List<ScaleRange> {
+            return values().filter { it.clef == clef && it.octave == octave}
         }
     }
 }
