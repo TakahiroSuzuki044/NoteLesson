@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.databinding.GamePlayingFragmentBinding
 import kotlinx.android.synthetic.main.game_playing_fragment.*
@@ -53,6 +55,13 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
         binding.root.viewTreeObserver.addOnGlobalLayoutListener(globalLayoutListener)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        game_playing_toolbar.title = Characters.GAME_PLAYING_TITLE.getString(requireContext())
+        game_playing_toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     override fun onFinish(correctCount: Int) {

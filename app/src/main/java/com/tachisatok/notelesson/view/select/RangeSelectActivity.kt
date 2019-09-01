@@ -2,9 +2,11 @@ package com.tachisatok.notelesson.view.select
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.Clef
 import com.tachisatok.notelesson.constant.Octave
 import com.tachisatok.notelesson.constant.ScaleRange
@@ -30,6 +32,9 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
         )
         range_select_activity_recycler_view.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
+        range_select_toolbar.title = Characters.RANGE_SELECT_TITLE.getString(this)
+        range_select_toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
     }
 
     override fun onItemClick(view: View, item: Any, position: Int) {

@@ -5,11 +5,21 @@
     <string name="number_2">②</string>
 
     <!-- 範囲選択画面 -->
+    <string name="range_select_title">ホーム</string>
+    <string name="range_select_title_jp">ほーむ</string>
     <string name="recent_game_range">最近練習したもの</string>
     <string name="recent_game_range_jp">さいきん れんしゅう したもの</string>
-
     <string name="record">記録：</string>
     <string name="record_jp">きろく：</string>
+
+    <!-- ゲーム中画面 -->
+    <string name="game_playing_title">チャレンジ！</string>
+    <string name="game_playing_title_jp">ちゃれんじ！</string>
+
+    <!-- ゲーム結果画面 -->
+    <string name="game_result_title">結果発表</string>
+    <string name="game_result_title_jp">けっか はっぴょう</string>
+
 
     <!-- 記号 -->
     <string name="g_clef">ト音記号</string>

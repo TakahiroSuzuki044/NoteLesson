@@ -20,7 +20,7 @@
         android:background="?attr/colorBase">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/game_result_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -29,28 +29,28 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/game_result_toolbar"
             android:background="@drawable/shape_game_result_correct_count_gradation"
             app:startAnim="@{viewModel.startCorrectNumberGradientAnim}"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/game_result_toolbar"
             android:background="@drawable/shape_game_result_correct_count_gradation"
             app:startAnim="@{viewModel.startCorrectNumberGradientAnim}"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/game_result_toolbar"
             android:background="@drawable/shape_game_result_correct_count_gradation"
             app:startAnim="@{viewModel.startCorrectNumberGradientAnim}"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/game_result_toolbar"
             android:orientation="vertical">
 
             <RelativeLayout

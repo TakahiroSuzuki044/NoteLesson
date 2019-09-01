@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.databinding.GameResultFragmentBinding
+import kotlinx.android.synthetic.main.game_result_fragment.*
 
 class GameResultFragment : Fragment(), GameResultViewModel.Callback {
 
@@ -26,6 +29,13 @@ class GameResultFragment : Fragment(), GameResultViewModel.Callback {
         binding.viewModel = GameResultViewModel(correctCount, this)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        game_result_toolbar.title = Characters.GAME_RESULT_TITLE.getString(requireContext())
+        game_result_toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     override fun onClickBack() {

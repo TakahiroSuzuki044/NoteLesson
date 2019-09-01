@@ -20,10 +20,17 @@ enum class Characters(
      */
     RECENT_GAME_RANGE(R.string.recent_game_range, R.string.recent_game_range_jp),
     RECORD(R.string.record, R.string.record_jp),
+    RANGE_SELECT_TITLE(R.string.range_select_title, R.string.range_select_title_jp),
+
+    /**
+     * ゲーム中画面
+     */
+    GAME_PLAYING_TITLE(R.string.game_playing_title, R.string.game_playing_title_jp),
 
     /**
      * ゲーム結果画面
      */
+    GAME_RESULT_TITLE(R.string.game_result_title, R.string.game_result_title_jp),
     GO_BACK(R.string.go_back, R.string.go_back_jp),
     REPLAY(R.string.replay, R.string.replay_jp),
     TOTAL_QUESTION_NUMBER(R.string.total_question_number, R.string.total_question_number_jp),
