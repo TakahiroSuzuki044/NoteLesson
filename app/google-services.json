@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "474572791152",
+    "firebase_url": "https://notelesson.firebaseio.com",
+    "project_id": "notelesson",
+    "storage_bucket": "notelesson.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474572791152:android:1f4995d3be1627c0",
+        "android_client_info": {
+          "package_name": "com.tachisatok.notelesson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474572791152-digf6ut7sgcg1p0dgm0d8nulmfa30hqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxgk4UtQafiXREP56KBxzah354MCHo3Cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474572791152-digf6ut7sgcg1p0dgm0d8nulmfa30hqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
