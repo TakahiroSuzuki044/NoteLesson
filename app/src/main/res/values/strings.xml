@@ -38,6 +38,9 @@
     <string name="not_found_app_text">起動できるアプリがありませんでした</string>
     <string name="menu_main_for_setting_text">設定画面へ</string>
 
+    <!-- デバッグ画面 -->
+    <string name="force_crash">強制クラッシュ</string>
+
     <!-- 記号 -->
     <string name="g_clef">ト音記号</string>
     <string name="g_clef_jp">とおんきごう</string>
