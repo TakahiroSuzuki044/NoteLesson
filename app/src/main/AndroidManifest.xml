@@ -27,12 +27,17 @@
             android:name=".view.game.GameActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.setting.SettingActivity"
+        <activity
+            android:name=".view.setting.SettingActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.debug.DebugActivity"/>
     </application>
+
     <meta-data
         android:name="firebase_crashlytics_collection_enabled"
-        android:value="false" />
+        android:value="false"/>
+    <meta-data
+        android:name="google_analytics_adid_collection_enabled"
+        android:value="false"/>
 </manifest>
