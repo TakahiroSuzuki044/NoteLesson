@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_fragment_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- セクション：その他 -->
+            <include
+                android:id="@+id/setting_section_other_layout"
+                layout="@layout/section_layout"/>
+
+            <!-- ご利用規約 -->
+            <include
+                android:id="@+id/setting_list_terms_layout"
+                layout="@layout/section_list_layout"/>
+
+            <!-- プライバシーポリシー -->
+            <include
+                android:id="@+id/setting_list_privacy_policy_layout"
+                layout="@layout/section_list_layout"/>
+
+            <!-- ライセンス -->
+            <include
+                android:id="@+id/setting_list_licence_layout"
+                layout="@layout/section_list_layout"/>
+
+            <!-- デバッグ機能 -->
+            <include
+                android:id="@+id/setting_debug_layout"
+                layout="@layout/section_list_layout"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

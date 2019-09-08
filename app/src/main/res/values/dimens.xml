@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_elevation">2dp</dimen>
+    <dimen name="card_radius">10dp</dimen>
+    <dimen name="list_padding">12dp</dimen>
+
+    <!-- ゲーム中画面 -->
+    <dimen name="center_answer_padding">8dp</dimen>
+
+</resources>

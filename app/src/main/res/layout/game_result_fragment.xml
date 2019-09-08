@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="characters"
+            type="com.tachisatok.notelesson.constant.Characters"/>
+
+        <variable
+            name="viewModel"
+            type="com.tachisatok.notelesson.view.game.GameResultViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorBase">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/game_result_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/game_result_toolbar"
+            android:background="@drawable/shape_game_result_correct_count_gradation"
+            app:startAnim="@{viewModel.startCorrectNumberGradientAnim}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/game_result_toolbar"
+            android:background="@drawable/shape_game_result_correct_count_gradation"
+            app:startAnim="@{viewModel.startCorrectNumberGradientAnim}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/game_result_toolbar"
+            android:background="@drawable/shape_game_result_correct_count_gradation"
+            app:startAnim="@{viewModel.startCorrectNumberGradientAnim}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/game_result_toolbar"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.7">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:startAnim="@{viewModel.startCorrectNumberAnim}">
+
+                    <RelativeLayout
+                        android:id="@+id/game_result_fragment_correct_count_relative_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/game_result_fragment_correct_count_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.correctCountStr}"
+                            android:textColor="@color/white"
+                            android:textSize="100dp"
+                            tools:text="10"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/game_result_fragment_correct_count_text_view"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_toRightOf="@+id/game_result_fragment_correct_count_text_view"
+                            android:text="@{characters.TOTAL_QUESTION_NUMBER.getString(context)}"
+                            android:textColor="@color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            tools:text="@string/total_question_number"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/game_result_fragment_correct_count_relative_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="16dp"
+                        android:text="@{characters.CORRECT_TEXT_FOR_GAME_RESULT.getString(context)}"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        tools:text="@string/correct_text_for_game_result"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/shape_game_result_button"
+                        android:clickable="true"
+                        android:elevation="@dimen/button_elevation"
+                        android:focusable="true"
+                        android:onClick="@{() -> viewModel.onClickBack()}"
+                        android:stateListAnimator="@animator/rise_button_layout">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:padding="16dp"
+                            android:src="@mipmap/back"/>
+                    </FrameLayout>
+
+                    <TextView
+                        style="@style/default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@{characters.GO_BACK.getString(context)}"
+                        android:textStyle="bold"
+                        tools:text="戻る"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    tools:ignore="NestedWeights">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/shape_game_result_button"
+                        android:clickable="true"
+                        android:elevation="@dimen/button_elevation"
+                        android:focusable="true"
+                        android:onClick="@{() -> viewModel.onClickReplay()}"
+                        android:stateListAnimator="@animator/rise_button_layout">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:padding="16dp"
+                            android:src="@mipmap/play"/>
+                    </FrameLayout>
+
+                    <TextView
+                        style="@style/default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@{characters.REPLAY.getString(context)}"
+                        android:textStyle="bold"
+                        tools:text="もう一回！"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

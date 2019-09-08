@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+
+    <!-- Red -->
+    <color name="colorPrimaryRed">#C2185B</color>
+    <color name="colorPrimaryDarkRed">#8C0032</color>
+    <color name="colorBaseRed">#F8BBD0</color>
+    <color name="colorAccentRed">#093E76</color>
+
+    <!-- Orange -->
+    <color name="colorPrimaryOrange">#EF6C00</color>
+    <color name="colorPrimaryDarkOrange">#B53D00</color>
+    <color name="colorBaseOrange">#FFCC80</color>
+    <color name="colorAccentOrange">#113CA0</color>
+
+    <!-- Yellow -->
+    <color name="colorPrimaryYellow">#F9A825</color>
+    <color name="colorPrimaryDarkYellow">#C17900</color>
+    <color name="colorBaseYellow">#FFEB3B</color>
+    <color name="colorAccentYellow">#3D2DAD</color>
+
+    <!-- Green -->
+    <color name="colorPrimaryGreen">#00796B</color>
+    <color name="colorPrimaryDarkGreen">#004C40</color>
+    <color name="colorBaseGreen">#A5D6A7</color>
+    <color name="colorAccentGreen">#C37F00</color>
+
+    <!-- Blue -->
+    <color name="colorPrimaryBlue">#2962FF</color>
+    <color name="colorPrimaryDarkBlue">#0039CB</color>
+    <color name="colorBaseBlue">#90CAF9</color>
+    <color name="colorAccentBlue">#FF800F</color>
+
+    <!-- Indigo -->
+    <color name="colorPrimaryIndigo">#304FFE</color>
+    <color name="colorPrimaryDarkIndigo">#0026CA</color>
+    <color name="colorBaseIndigo">#8C9EFF</color>
+    <color name="colorAccentIndigo">#FF8D12</color>
+
+    <!-- Violet -->
+    <color name="colorPrimaryViolet">#4527A0</color>
+    <color name="colorPrimaryDarkViolet">#000070</color>
+    <color name="colorBaseViolet">#B388FF</color>
+    <color name="colorAccentViolet">#E9A822</color>
+
+    <!-- Black -->
+    <color name="colorPrimaryBlack">#263238</color>
+    <color name="colorPrimaryDarkBlack">#000A12</color>
+    <color name="colorBaseBlack">#CFD8DC</color>
+    <color name="colorAccentBlack">#59413B</color>
+
+    <color name="text_color">#262622</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#ad1457</color>
+    <color name="clear">#00ffffff</color>
+    <color name="ripple_white">#c7c7c7</color>
+    <color name="correct_red">#b3b71c1c</color>
+
 </resources>
