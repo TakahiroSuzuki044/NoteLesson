@@ -15,6 +15,7 @@ import com.tachisatok.notelesson.analysis.PAGE_VIEW_GAME_RESULT
 import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.databinding.GameResultFragmentBinding
+import com.tachisatok.notelesson.util.ClickUtil
 import kotlinx.android.synthetic.main.game_result_fragment.*
 
 class GameResultFragment : Fragment(), GameResultViewModel.Callback {
@@ -41,7 +42,12 @@ class GameResultFragment : Fragment(), GameResultViewModel.Callback {
         super.onViewCreated(view, savedInstanceState)
 
         game_result_toolbar.title = Characters.GAME_RESULT_TITLE.getString(requireContext())
-        game_result_toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+        game_result_toolbar.setTitleTextColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.white
+            )
+        )
     }
 
     override fun onResume() {
@@ -50,18 +56,20 @@ class GameResultFragment : Fragment(), GameResultViewModel.Callback {
     }
 
     override fun onClickBack() {
-        activity?.finish()
-
-        firebaseAnalyticsManager.sendLog(EVENT_GAME_RESULT_TAP_BACK)
+        if (ClickUtil.isClickable()) {
+            activity?.finish()
+            firebaseAnalyticsManager.sendLog(EVENT_GAME_RESULT_TAP_BACK)
+        }
     }
 
     override fun onClickReplay() {
-        fragmentManager?.beginTransaction()?.apply {
-            replace(R.id.game_activity_content, GamePlayingFragment.getInstance(itemData))
-            commit()
+        if (ClickUtil.isClickable()) {
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.game_activity_content, GamePlayingFragment.getInstance(itemData))
+                commit()
+            }
+            firebaseAnalyticsManager.sendLog(EVENT_GAME_RESULT_TAP_REPLAY)
         }
-
-        firebaseAnalyticsManager.sendLog(EVENT_GAME_RESULT_TAP_REPLAY)
     }
 
     companion object {

@@ -18,6 +18,7 @@ import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.Clef
 import com.tachisatok.notelesson.constant.Octave
 import com.tachisatok.notelesson.constant.ScaleRange
+import com.tachisatok.notelesson.util.ClickUtil
 import com.tachisatok.notelesson.view.base.BaseActivity
 import com.tachisatok.notelesson.view.game.GameActivity
 import com.tachisatok.notelesson.view.setting.SettingActivity
@@ -74,7 +75,7 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
     }
 
     override fun onItemClick(view: View, item: Any, position: Int) {
-        if (item is ScaleRange) {
+        if (item is ScaleRange && ClickUtil.isClickable()) {
             val intent = GameActivity.newIntent(this, item)
             startActivity(intent)
 
