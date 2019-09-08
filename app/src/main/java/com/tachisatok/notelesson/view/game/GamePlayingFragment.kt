@@ -10,12 +10,16 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.analysis.FirebaseAnalyticsManager
+import com.tachisatok.notelesson.analysis.PAGE_VIEW_GAME_PLAYING
 import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.databinding.GamePlayingFragmentBinding
 import kotlinx.android.synthetic.main.game_playing_fragment.*
 
 class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
+
+    private val firebaseAnalyticsManager by lazy { FirebaseAnalyticsManager(requireContext()) }
 
     private val itemData by lazy { (arguments?.getSerializable(ARGS_KEY_ITEM_DATA) as ScaleRange) }
 
@@ -62,6 +66,11 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
 
         game_playing_toolbar.title = Characters.GAME_PLAYING_TITLE.getString(requireContext())
         game_playing_toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        firebaseAnalyticsManager.sendLog(PAGE_VIEW_GAME_PLAYING)
     }
 
     override fun onFinish(correctCount: Int) {

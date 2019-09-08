@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.crashlytics.android.Crashlytics
 import com.tachisatok.notelesson.BuildConfig
 import com.tachisatok.notelesson.R
+import com.tachisatok.notelesson.analysis.EVENT_RANGE_SELECT_TAP_ITEM
+import com.tachisatok.notelesson.analysis.FirebaseAnalyticsManager
+import com.tachisatok.notelesson.analysis.PAGE_VIEW_RANGE_SELECT
 import com.tachisatok.notelesson.constant.Characters
 import com.tachisatok.notelesson.constant.Clef
 import com.tachisatok.notelesson.constant.Octave
@@ -19,6 +22,8 @@ import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.range_select_activity.*
 
 class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
+
+    private val firebaseAnalyticsManager by lazy { FirebaseAnalyticsManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +47,17 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
         enableCrashlytics()
     }
 
+    override fun onResume() {
+        super.onResume()
+        firebaseAnalyticsManager.sendLog(PAGE_VIEW_RANGE_SELECT)
+    }
+
     override fun onItemClick(view: View, item: Any, position: Int) {
         if (item is ScaleRange) {
             val intent = GameActivity.newIntent(this, item)
             startActivity(intent)
+
+            firebaseAnalyticsManager.sendLog(EVENT_RANGE_SELECT_TAP_ITEM, listOf(item.name))
         }
     }
 
