@@ -1,3 +1,83 @@
 <resources>
-    <string name="app_name">NoteLesson</string>
+    <string name="app_name">おんぷまなび</string>
+
+    <string name="number_1">①</string>
+    <string name="number_2">②</string>
+
+    <!-- 範囲選択画面 -->
+    <string name="range_select_title">ホーム</string>
+    <string name="range_select_title_jp">ほーむ</string>
+    <string name="recent_game_range">最近練習したもの</string>
+    <string name="recent_game_range_jp">さいきん れんしゅう したもの</string>
+    <string name="record">記録：</string>
+    <string name="record_jp">きろく：</string>
+
+    <!-- ゲーム中画面 -->
+    <string name="game_playing_title">チャレンジ！</string>
+    <string name="game_playing_title_jp">ちゃれんじ！</string>
+
+    <!-- ゲーム結果画面 -->
+    <string name="game_result_title">結果発表</string>
+    <string name="game_result_title_jp">けっか はっぴょう</string>
+    <string name="go_back">戻る</string>
+    <string name="go_back_jp">もどる</string>
+    <string name="replay">もう一回！</string>
+    <string name="replay_jp">もういっかい！</string>
+    <string name="total_question_number">問</string>
+    <string name="total_question_number_jp">もん</string>
+    <string name="correct_text_for_game_result">正解だよ！</string>
+    <string name="correct_text_for_game_result_jp">せいかいだよ！</string>
+
+    <!-- 設定画面 -->
+    <string name="setting_title">設定</string>
+    <string name="other">その他</string>
+    <string name="term">ご利用規約</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="licence">ライセンス</string>
+    <string name="debug">デバッグ</string>
+    <string name="not_found_app_text">起動できるアプリがありませんでした</string>
+    <string name="menu_main_for_setting_text">設定画面へ</string>
+
+    <!-- デバッグ画面 -->
+    <string name="force_crash">強制クラッシュ</string>
+
+    <!-- 記号 -->
+    <string name="g_clef">ト音記号</string>
+    <string name="g_clef_jp">とおんきごう</string>
+
+    <string name="f_clef">ヘ音記号</string>
+    <string name="f_clef_jp">へおんきごう</string>
+
+    <!-- 音名 -->
+    <string name="c">ド</string>
+    <string name="c_jp">ど</string>
+
+    <string name="d">レ</string>
+    <string name="d_jp">れ</string>
+
+    <string name="e">ミ</string>
+    <string name="e_jp">み</string>
+
+    <string name="f">ファ</string>
+    <string name="f_jp">ふぁ</string>
+
+    <string name="g">ソ</string>
+    <string name="g_jp">そ</string>
+
+    <string name="a">ラ</string>
+    <string name="a_jp">ら</string>
+
+    <string name="b">シ</string>
+    <string name="b_jp">し</string>
+
+    <!-- 範囲 -->
+    <string name="c_to_e">ド〜ミ</string>
+    <string name="c_to_e_jp">ど〜み</string>
+
+    <string name="c_to_g">ド〜ソ</string>
+    <string name="c_to_g_jp">ど〜そ</string>
+
+    <string name="c_to_c">ド〜ド</string>
+    <string name="c_to_c_jp">ど〜ど</string>
+
 </resources>

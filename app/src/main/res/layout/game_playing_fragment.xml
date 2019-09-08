@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="characters"
+            type="com.tachisatok.notelesson.constant.Characters"/>
+
+        <variable
+            name="noteName"
+            type="com.tachisatok.notelesson.constant.NoteName"/>
+
+        <variable
+            name="viewModel"
+            type="com.tachisatok.notelesson.view.game.GamePlayingViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorBase"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/game_playing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.45"
+                android:clipChildren="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="20dp">
+
+                        <ImageView
+                            android:id="@+id/game_playing_fragment_correct_number_image_view"
+                            style="@style/default_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/note_8"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="残り時間："/>
+
+                        <TextView
+                            style="@style/large_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@+id/game_playing_fragment_correct_number_image_view"
+                            android:textStyle="bold"
+                            app:correctTextWithAnim="@{viewModel.correctCountStr}"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="20"/>
+
+                        <ImageView
+                            style="@style/default_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/game_playing_fragment_timer_text_view"
+                            android:text=""
+                            app:timerSrc="@{viewModel.timeCountStr}"
+                            tools:ignore="RtlHardcoded"
+                            tools:src="@mipmap/timer"/>
+
+                        <TextView
+                            android:id="@+id/game_playing_fragment_timer_text_view"
+                            style="@style/large_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
+                            app:timerTextWithAnim="@{viewModel.timeCountStr}"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="10"/>
+
+                        <TextView
+                            style="@style/large_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:textStyle="bold"
+                            app:timerText="@{viewModel.timeCountStr}"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="10"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/shape_game_playing_question_area_layout"
+                        android:padding="16dp"
+                        app:startFailAnim="@{viewModel.failCount}">
+
+                        <ImageView
+                            android:id="@+id/game_playing_fragment_clef_image_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            app:imageSrc="@{viewModel.questionImageRes}"
+                            tools:src="@mipmap/g_clef_octave4_c"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/shape_game_playing_correct"
+                    android:visibility="gone"
+                    app:startCorrectAnim="@{viewModel.correctCountStr}"/>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.225"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="40dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="10dp">
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.D}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.F}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.A}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.225"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="40dp">
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.C}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_e"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.E}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_g"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.G}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/game_playing_fragment_answer_layout_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/center_answer_padding"
+                    android:paddingRight="@dimen/center_answer_padding">
+
+                    <include
+                        layout="@layout/game_playing_answer_layout"
+                        app:noteName="@{noteName.B}"
+                        app:viewModel="@{viewModel}"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
