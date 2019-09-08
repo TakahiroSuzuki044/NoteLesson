@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/home_setting"
+          android:icon="@mipmap/setting"
+          app:showAsAction="ifRoom"
+          android:title="@string/menu_main_for_setting_text"/>
+</menu>

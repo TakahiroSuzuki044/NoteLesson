@@ -1,6 +1,9 @@
 package com.tachisatok.notelesson.view.select
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +20,7 @@ import com.tachisatok.notelesson.constant.Octave
 import com.tachisatok.notelesson.constant.ScaleRange
 import com.tachisatok.notelesson.view.base.BaseActivity
 import com.tachisatok.notelesson.view.game.GameActivity
+import com.tachisatok.notelesson.view.setting.SettingActivity
 import com.tachisatok.notelesson.view.ui.OnItemClickCallback
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.range_select_activity.*
@@ -43,6 +47,7 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
 
         range_select_toolbar.title = Characters.RANGE_SELECT_TITLE.getString(this)
         range_select_toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(range_select_toolbar)
 
         enableCrashlytics()
     }
@@ -50,6 +55,22 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
     override fun onResume() {
         super.onResume()
         firebaseAnalyticsManager.sendLog(PAGE_VIEW_RANGE_SELECT)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_manu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.home_setting -> {
+
+                val intent = Intent(applicationContext, SettingActivity::class.java)
+                startActivityForResult(intent, REQUEST_CODE_START_SETTING)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onItemClick(view: View, item: Any, position: Int) {
@@ -65,5 +86,9 @@ class RangeSelectActivity : BaseActivity(), OnItemClickCallback {
         if (BuildConfig.DEBUG) {
             Fabric.with(this, Crashlytics())
         }
+    }
+
+    companion object {
+        private const val REQUEST_CODE_START_SETTING = 1
     }
 }
