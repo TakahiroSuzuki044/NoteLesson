@@ -27,6 +27,8 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
 
     private lateinit var globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener
 
+    private lateinit var viewModel: GamePlayingViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,11 +36,12 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
     ): View? {
         val binding: GamePlayingFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.game_playing_fragment, container, false)
-        binding.viewModel = GamePlayingViewModel(
+        viewModel = GamePlayingViewModel(
             context!!,
             this,
             itemData
         )
+        binding.viewModel = viewModel
 
         globalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
             val rootView = view
@@ -71,6 +74,12 @@ class GamePlayingFragment : Fragment(), GamePlayingViewModel.GameEndCallback {
     override fun onResume() {
         super.onResume()
         firebaseAnalyticsManager.sendLog(PAGE_VIEW_GAME_PLAYING)
+        viewModel.startTimer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.stopTimer()
     }
 
     override fun onFinish(correctCount: Int) {

@@ -92,6 +92,14 @@ class GamePlayingViewModel(
         }
     }
 
+    fun stopTimer() {
+        gameTimer.cancel()
+    }
+
+    fun startTimer() {
+        gameTimer.start()
+    }
+
     interface GameEndCallback {
         /**
          * ゲームの終了時に実行される
