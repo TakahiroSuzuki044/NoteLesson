@@ -8,15 +8,27 @@ class GameTimer(
     private val countDownTime: Int
 ) {
 
-    private val timer = Timer()
+    private var timer = Timer()
+
+    private var count = countDownTime
+
+    /**
+     * 計測中フラグ
+     */
+    private var isMeasuring: Boolean = false
 
     /**
      * 計測をスタートする
      */
     fun start() {
+        if (isMeasuring) {
+            return
+        }
+        isMeasuring = true
+        timer = Timer()
+
         val handler = Handler()
         val task = object : TimerTask() {
-            var count = countDownTime
             override fun run() {
                 count--
 
@@ -36,6 +48,7 @@ class GameTimer(
      */
     fun cancel() {
         timer.cancel()
+        isMeasuring = false
     }
 
     interface Callback {
