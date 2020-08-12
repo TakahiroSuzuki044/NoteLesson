@@ -64,7 +64,7 @@ class GameResultFragment : Fragment(), GameResultViewModel.Callback {
 
     override fun onClickReplay() {
         if (ClickUtil.isClickable()) {
-            fragmentManager?.beginTransaction()?.apply {
+            parentFragmentManager.beginTransaction().apply {
                 replace(R.id.game_activity_content, GamePlayingFragment.getInstance(itemData))
                 commit()
             }
