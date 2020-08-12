@@ -3,10 +3,10 @@ package com.tachisatok.notelesson.view.debug
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.crashlytics.android.Crashlytics
 import com.tachisatok.notelesson.R
 import com.tachisatok.notelesson.view.base.BaseActivity
 import kotlinx.android.synthetic.main.debug_activity.*
+import java.lang.RuntimeException
 
 class DebugActivity : BaseActivity(), View.OnClickListener {
 
@@ -38,7 +38,7 @@ class DebugActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.force_crash_layout -> {
-                Crashlytics.getInstance().crash()
+                throw RuntimeException("Test Crash")
             }
         }
     }
